@@ -8,24 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainMenuForm;
+using NewGameForm;
 
-namespace NewGameForm
+namespace MemoryForm
 {
-    public partial class MenuNewGame_Form : UserControl
+    public partial class Memory_Form : UserControl
     {
-        #region DataMembers
+        private MenuNewGame_Form _newGameForm;
         private MainMenu_Form _mainMenu;
-        #endregion
-
-        public MenuNewGame_Form(MainMenu_Form mainMenu)
+        public Memory_Form(MenuNewGame_Form newGameForm)
         {
             InitializeComponent();
-            _mainMenu = mainMenu;
+            _newGameForm = newGameForm;
+            _mainMenu = newGameForm.GetMainMenu();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            _mainMenu.ShowMainMenu();
+            _mainMenu.ShowMenuHost(_newGameForm.PnlMenuNewGame);
         }
     }
 }

@@ -26,6 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        
         private void InitializeComponent()
         {
             this.lblGameName = new System.Windows.Forms.Label();
@@ -39,8 +40,9 @@
             // lblGameName
             // 
             this.lblGameName.AutoSize = true;
+            this.lblGameName.BackColor = System.Drawing.Color.White;
             this.lblGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameName.Location = new System.Drawing.Point(546, 193);
+            this.lblGameName.Location = new System.Drawing.Point(718, 158);
             this.lblGameName.Name = "lblGameName";
             this.lblGameName.Size = new System.Drawing.Size(984, 190);
             this.lblGameName.TabIndex = 0;
@@ -76,6 +78,7 @@
             this.BtnCreatePlayer.TabIndex = 3;
             this.BtnCreatePlayer.Text = "Create Player";
             this.BtnCreatePlayer.UseVisualStyleBackColor = true;
+            this.BtnCreatePlayer.Click += new System.EventHandler(this.BtnCreatePlayer_Click);
             // 
             // BtnLeave
             // 
@@ -86,6 +89,7 @@
             this.BtnLeave.TabIndex = 4;
             this.BtnLeave.Text = "Leave";
             this.BtnLeave.UseVisualStyleBackColor = true;
+            this.BtnLeave.Click += new System.EventHandler(this.BtnLeave_Click);
             // 
             // PnlHost
             // 
@@ -100,7 +104,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
-            this.ClientSize = new System.Drawing.Size(2119, 1296);
+            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Menu_PrincipalImage;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(2116, 1296);
             this.Controls.Add(this.PnlHost);
             this.Controls.Add(this.BtnLeave);
             this.Controls.Add(this.BtnCreatePlayer);
@@ -121,7 +127,7 @@
         private System.Windows.Forms.Button BtnStats;
         private System.Windows.Forms.Button BtnCreatePlayer;
         private System.Windows.Forms.Button BtnLeave;
-        private System.Windows.Forms.Panel PnlHost;
+        public System.Windows.Forms.Panel PnlHost;
     }
 }
 

@@ -1,6 +1,6 @@
-﻿namespace NewGameForm
+﻿namespace MemoryForm
 {
-    partial class MenuNewGame_Form
+    partial class Memory_Form
     {
         /// <summary> 
         /// Required designer variable.
@@ -33,21 +33,23 @@
             // 
             // BtnBack
             // 
-            this.BtnBack.Location = new System.Drawing.Point(1181, 72);
+            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBack.Location = new System.Drawing.Point(1698, 105);
             this.BtnBack.Name = "BtnBack";
-            this.BtnBack.Size = new System.Drawing.Size(151, 89);
-            this.BtnBack.TabIndex = 0;
+            this.BtnBack.Size = new System.Drawing.Size(292, 127);
+            this.BtnBack.TabIndex = 3;
             this.BtnBack.Text = "Back";
             this.BtnBack.UseVisualStyleBackColor = true;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
-            // MenuNewGame_Form
+            // Memory_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Peru;
             this.Controls.Add(this.BtnBack);
-            this.Name = "MenuNewGame_Form";
-            this.Size = new System.Drawing.Size(1471, 1052);
+            this.Name = "Memory_Form";
+            this.Size = new System.Drawing.Size(2140, 1360);
             this.ResumeLayout(false);
 
         }
