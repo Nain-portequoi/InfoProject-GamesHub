@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainMenuForm;
 using MemoryForm;
+using DataBase;
+using PlayerInformation;
 
 namespace NewGameForm
 {
@@ -16,6 +18,7 @@ namespace NewGameForm
     {
         #region DataMembers
         private MainMenu_Form _mainMenu;
+        private DataBaseConfig _dataBase;
 
         public MainMenu_Form GetMainMenu() 
         {
@@ -37,6 +40,18 @@ namespace NewGameForm
             _mainMenu = mainMenu;
             CcbPlayer1.DropDownStyle = ComboBoxStyle.DropDownList;
             CcbPlayer2.DropDownStyle = ComboBoxStyle.DropDownList;
+
+        }
+
+        private void MenuNewGame_Form_Load(object sender, EventArgs e)
+        {
+            _dataBase = new DataBaseConfig();
+            List<Player> players = _dataBase.GetPlayersPseudo();
+            foreach (Player player in players)
+            {
+                CcbPlayer1.Items.Add(player.Pseudo);
+                CcbPlayer2.Items.Add(player.Pseudo);
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

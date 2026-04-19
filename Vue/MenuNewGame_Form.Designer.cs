@@ -154,10 +154,10 @@
         #endregion
 
         private System.Windows.Forms.Button BtnBack;
-        private System.Windows.Forms.ComboBox CcbPlayer1;
+        public System.Windows.Forms.ComboBox CcbPlayer1;
         private System.Windows.Forms.Label lblSelectPlayer1;
         private System.Windows.Forms.Label lblSelectPlayer2;
-        private System.Windows.Forms.ComboBox CcbPlayer2;
+        public System.Windows.Forms.ComboBox CcbPlayer2;
         private System.Windows.Forms.Label lblSelectGame;
         private System.Windows.Forms.Button BtnPictionary;
         private System.Windows.Forms.Button BtnBlackJack;

@@ -8,17 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainMenuForm;
+using NewGameForm;
+using DataBase;
 
 namespace MenuCreatePlayer
 {
     public partial class CreatePlayer_Form : UserControl
     {
-        private MainMenu_Form _mainMenu;
+        private readonly MainMenu_Form _mainMenu;
+        private readonly MenuNewGame_Form _newGame;
+        private readonly DataBaseConfig _dataBase = new DataBaseConfig();
         public CreatePlayer_Form(MainMenu_Form mainMenu)
         {
             _mainMenu = mainMenu;
             InitializeComponent();
             TxtPseudo.Focus();
+            _newGame = new MenuNewGame_Form(_mainMenu);
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -30,9 +35,12 @@ namespace MenuCreatePlayer
         {
             if (WantToSave(sender, e))
             {
-                // Save the information
+                _dataBase.CreatePlayersTable();
+                _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "");
             }
         }
+        
+
 
         private bool WantToSave(object sender, EventArgs e)
         {

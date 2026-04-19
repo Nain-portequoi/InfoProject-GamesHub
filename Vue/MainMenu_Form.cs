@@ -1,5 +1,6 @@
 ﻿using NewGameForm;
 using MenuCreatePlayer;
+using MenuStatsForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,11 +22,8 @@ namespace MainMenuForm
         }
 
 
-        private void BtnNewGame_Click(object sender, EventArgs e)
-        {
-            ShowMenuNewGame();
-        }
 
+        #region ShowMenuMethods
         private void ShowMenuNewGame()
         {
             SetPanel(PnlHost);
@@ -46,6 +44,14 @@ namespace MainMenuForm
             PnlHost.Controls.Add(createPlayer);
         }
 
+        private void ShowMenuStats()
+        {
+            SetPanel(PnlHost);
+            // Create an instance of the MenuStats_Form
+            MenuStats_Form menuStats = new MenuStats_Form(this);
+            menuStats.Dock = DockStyle.Fill;
+            PnlHost.Controls.Add(menuStats);
+        }        
         public void SetPanel(Panel panel) 
         {
             panel.Controls.Clear();
@@ -58,16 +64,27 @@ namespace MainMenuForm
             panel.Controls.Clear();
             panel.Visible = false;
         }
+        #endregion
+
+
 
 
         private void BtnLeave_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        private void BtnNewGame_Click(object sender, EventArgs e)
+        {
+            ShowMenuNewGame();
+        }
         private void BtnCreatePlayer_Click(object sender, EventArgs e)
         {
             ShowMenuCreatePlayer();
+        }
+
+        private void BtnStats_Click(object sender, EventArgs e)
+        {
+            ShowMenuStats();
         }
     }
 }
