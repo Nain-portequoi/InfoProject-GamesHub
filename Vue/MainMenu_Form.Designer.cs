@@ -51,10 +51,9 @@
             // 
             // BtnNewGame
             // 
-            this.BtnNewGame.Enabled = false;
             this.BtnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnNewGame.Location = new System.Drawing.Point(216, 713);
-            this.BtnNewGame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnNewGame.Margin = new System.Windows.Forms.Padding(4);
             this.BtnNewGame.Name = "BtnNewGame";
             this.BtnNewGame.Size = new System.Drawing.Size(372, 170);
             this.BtnNewGame.TabIndex = 1;
@@ -66,7 +65,7 @@
             // 
             this.BtnStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStats.Location = new System.Drawing.Point(669, 713);
-            this.BtnStats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnStats.Margin = new System.Windows.Forms.Padding(4);
             this.BtnStats.Name = "BtnStats";
             this.BtnStats.Size = new System.Drawing.Size(372, 170);
             this.BtnStats.TabIndex = 2;
@@ -78,7 +77,7 @@
             // 
             this.BtnCreatePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCreatePlayer.Location = new System.Drawing.Point(1113, 713);
-            this.BtnCreatePlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCreatePlayer.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCreatePlayer.Name = "BtnCreatePlayer";
             this.BtnCreatePlayer.Size = new System.Drawing.Size(372, 170);
             this.BtnCreatePlayer.TabIndex = 3;
@@ -90,7 +89,7 @@
             // 
             this.BtnLeave.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnLeave.Location = new System.Drawing.Point(1566, 713);
-            this.BtnLeave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnLeave.Margin = new System.Windows.Forms.Padding(4);
             this.BtnLeave.Name = "BtnLeave";
             this.BtnLeave.Size = new System.Drawing.Size(372, 170);
             this.BtnLeave.TabIndex = 4;
@@ -101,7 +100,7 @@
             // PnlHost
             // 
             this.PnlHost.Location = new System.Drawing.Point(4, 4);
-            this.PnlHost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PnlHost.Margin = new System.Windows.Forms.Padding(4);
             this.PnlHost.Name = "PnlHost";
             this.PnlHost.Size = new System.Drawing.Size(200, 100);
             this.PnlHost.TabIndex = 5;
@@ -121,9 +120,10 @@
             this.Controls.Add(this.BtnStats);
             this.Controls.Add(this.BtnNewGame);
             this.Controls.Add(this.lblGameName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMenu_Form";
             this.Text = "MainMenu_Form";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

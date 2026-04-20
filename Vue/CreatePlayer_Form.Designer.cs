@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblPlayerCreation = new System.Windows.Forms.Label();
             this.BtnBack = new System.Windows.Forms.Button();
             this.lblPseudo = new System.Windows.Forms.Label();
             this.TxtPseudo = new System.Windows.Forms.TextBox();
@@ -42,20 +41,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lblPlayerCreation
-            // 
-            this.lblPlayerCreation.AutoSize = true;
-            this.lblPlayerCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerCreation.Location = new System.Drawing.Point(35, 156);
-            this.lblPlayerCreation.Name = "lblPlayerCreation";
-            this.lblPlayerCreation.Size = new System.Drawing.Size(835, 126);
-            this.lblPlayerCreation.TabIndex = 1;
-            this.lblPlayerCreation.Text = "Player Creation";
-            // 
             // BtnBack
             // 
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBack.Location = new System.Drawing.Point(1737, 83);
+            this.BtnBack.Location = new System.Drawing.Point(2061, 217);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(292, 127);
             this.BtnBack.TabIndex = 3;
@@ -66,8 +55,10 @@
             // lblPseudo
             // 
             this.lblPseudo.AutoSize = true;
+            this.lblPseudo.BackColor = System.Drawing.Color.Transparent;
             this.lblPseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPseudo.Location = new System.Drawing.Point(119, 343);
+            this.lblPseudo.ForeColor = System.Drawing.Color.Sienna;
+            this.lblPseudo.Location = new System.Drawing.Point(623, 487);
             this.lblPseudo.Name = "lblPseudo";
             this.lblPseudo.Size = new System.Drawing.Size(233, 59);
             this.lblPseudo.TabIndex = 5;
@@ -76,25 +67,29 @@
             // TxtPseudo
             // 
             this.TxtPseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPseudo.Location = new System.Drawing.Point(445, 343);
+            this.TxtPseudo.Location = new System.Drawing.Point(949, 487);
             this.TxtPseudo.Name = "TxtPseudo";
             this.TxtPseudo.Size = new System.Drawing.Size(287, 65);
             this.TxtPseudo.TabIndex = 6;
             this.TxtPseudo.TextChanged += new System.EventHandler(this.TxtPseudo_TextChanged);
+            this.TxtPseudo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPseudo_KeyPress);
             // 
             // TxtFirstName
             // 
             this.TxtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFirstName.Location = new System.Drawing.Point(445, 451);
+            this.TxtFirstName.Location = new System.Drawing.Point(949, 595);
             this.TxtFirstName.Name = "TxtFirstName";
             this.TxtFirstName.Size = new System.Drawing.Size(287, 65);
             this.TxtFirstName.TabIndex = 8;
+            this.TxtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFirstName_KeyPress);
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
+            this.lblFirstName.BackColor = System.Drawing.Color.Transparent;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(119, 451);
+            this.lblFirstName.ForeColor = System.Drawing.Color.Sienna;
+            this.lblFirstName.Location = new System.Drawing.Point(623, 595);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(313, 59);
             this.lblFirstName.TabIndex = 7;
@@ -103,16 +98,19 @@
             // TxtLastName
             // 
             this.TxtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtLastName.Location = new System.Drawing.Point(445, 557);
+            this.TxtLastName.Location = new System.Drawing.Point(949, 701);
             this.TxtLastName.Name = "TxtLastName";
             this.TxtLastName.Size = new System.Drawing.Size(287, 65);
             this.TxtLastName.TabIndex = 10;
+            this.TxtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLastName_KeyPress);
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
+            this.lblLastName.BackColor = System.Drawing.Color.Transparent;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(119, 557);
+            this.lblLastName.ForeColor = System.Drawing.Color.Sienna;
+            this.lblLastName.Location = new System.Drawing.Point(623, 701);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(309, 59);
             this.lblLastName.TabIndex = 9;
@@ -122,7 +120,7 @@
             // 
             this.BtnSaveInformation.Enabled = false;
             this.BtnSaveInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSaveInformation.Location = new System.Drawing.Point(129, 758);
+            this.BtnSaveInformation.Location = new System.Drawing.Point(633, 902);
             this.BtnSaveInformation.Name = "BtnSaveInformation";
             this.BtnSaveInformation.Size = new System.Drawing.Size(603, 127);
             this.BtnSaveInformation.TabIndex = 11;
@@ -133,9 +131,10 @@
             // lblRequired
             // 
             this.lblRequired.AutoSize = true;
+            this.lblRequired.BackColor = System.Drawing.Color.Transparent;
             this.lblRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequired.ForeColor = System.Drawing.Color.Red;
-            this.lblRequired.Location = new System.Drawing.Point(738, 343);
+            this.lblRequired.Location = new System.Drawing.Point(1242, 487);
             this.lblRequired.Name = "lblRequired";
             this.lblRequired.Size = new System.Drawing.Size(274, 59);
             this.lblRequired.TabIndex = 12;
@@ -144,9 +143,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(738, 451);
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(1242, 595);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(286, 59);
             this.label1.TabIndex = 13;
@@ -155,9 +155,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(738, 557);
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(1242, 701);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(286, 59);
             this.label2.TabIndex = 14;
@@ -168,6 +169,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
+            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Player_Creation;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblRequired);
@@ -179,7 +182,6 @@
             this.Controls.Add(this.TxtPseudo);
             this.Controls.Add(this.lblPseudo);
             this.Controls.Add(this.BtnBack);
-            this.Controls.Add(this.lblPlayerCreation);
             this.Name = "CreatePlayer_Form";
             this.Size = new System.Drawing.Size(2140, 1360);
             this.ResumeLayout(false);
@@ -188,8 +190,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblPlayerCreation;
         private System.Windows.Forms.Button BtnBack;
         private System.Windows.Forms.Label lblPseudo;
         private System.Windows.Forms.TextBox TxtPseudo;

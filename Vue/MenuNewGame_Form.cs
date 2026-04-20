@@ -47,9 +47,11 @@ namespace NewGameForm
         private void MenuNewGame_Form_Load()
         {
             _dataBase = new DataBaseConfig();
-            List<Player> players = _dataBase.GetPlayersPseudo();
-            foreach (Player player in players)
+            int numberOfPlayers = _dataBase.GetNumberOfPlayers();
+
+            for (int i = 0; i < numberOfPlayers; i++)
             {
+                Player player = _dataBase.GetPlayersPseudo(i + 1);
                 CcbPlayer1.Items.Add(player.Pseudo);
                 CcbPlayer2.Items.Add(player.Pseudo);
             }

@@ -25,5 +25,12 @@ namespace PlayerInformation
         {
             Pseudo = pseudo;
         }
+
+        private List<Player> _playersPseudo = new List<Player>();
+
+        public List<Player> GetPlayersPseudo()
+        {
+            return _playersPseudo;
+        }
     }
 }

@@ -35,13 +35,16 @@ namespace MenuCreatePlayer
         {
             if (WantToSave(sender, e))
             {
-                _dataBase.CreatePlayersTable();
-                _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "");
-                _mainMenu.IsPlayerCreated = true;
-                _mainMenu.EnableButtons();
-                _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
+                bool ok = _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "");
+                if (ok)
+                {
+                    _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
+                }
+                else
+                {
+                    MessageBox.Show("Error saving player information. \nThe pseudo might already exist !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-
         }
         
 
@@ -70,5 +73,27 @@ namespace MenuCreatePlayer
                 BtnSaveInformation.Enabled = false;
             }
         }
+        private void PerformClickSave(KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnSaveInformation.PerformClick();
+            }
+        }
+        private void TxtPseudo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PerformClickSave(e);
+        }
+
+        private void TxtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PerformClickSave(e);
+        }
+
+        private void TxtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PerformClickSave(e);
+        }
+
     }
 }

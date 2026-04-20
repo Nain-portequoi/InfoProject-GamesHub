@@ -16,19 +16,14 @@ namespace MainMenuForm
 {
     public partial class MainMenu_Form : Form
     {
-        public bool IsPlayerCreated { get; set; } = false;
-        private DataBaseConfig _dataBase = new DataBaseConfig();
+        private readonly DataBaseConfig _dataBase = new DataBaseConfig();
         public MainMenu_Form()
         {
             InitializeComponent();
             
+            _dataBase.DeleteAllPlayers();
             _dataBase.CreateGameTable();
-        }
-
-        public void EnableButtons()
-        {
-            BtnNewGame.Enabled = IsPlayerCreated;
-            BtnStats.Enabled = IsPlayerCreated;
+            _dataBase.CreatePlayersTable();
         }
 
         #region ShowMenuMethods
@@ -73,8 +68,6 @@ namespace MainMenuForm
             panel.Visible = false;
         }
         #endregion
-
-
 
 
         private void BtnLeave_Click(object sender, EventArgs e)
