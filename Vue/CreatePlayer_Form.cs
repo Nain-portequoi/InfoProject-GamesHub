@@ -37,7 +37,11 @@ namespace MenuCreatePlayer
             {
                 _dataBase.CreatePlayersTable();
                 _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "");
+                _mainMenu.IsPlayerCreated = true;
+                _mainMenu.EnableButtons();
+                _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
             }
+
         }
         
 

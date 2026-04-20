@@ -1,6 +1,7 @@
 ﻿using NewGameForm;
 using MenuCreatePlayer;
 using MenuStatsForm;
+using DataBase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,13 +16,20 @@ namespace MainMenuForm
 {
     public partial class MainMenu_Form : Form
     {
+        public bool IsPlayerCreated { get; set; } = false;
+        private DataBaseConfig _dataBase = new DataBaseConfig();
         public MainMenu_Form()
         {
             InitializeComponent();
             
+            _dataBase.CreateGameTable();
         }
 
-
+        public void EnableButtons()
+        {
+            BtnNewGame.Enabled = IsPlayerCreated;
+            BtnStats.Enabled = IsPlayerCreated;
+        }
 
         #region ShowMenuMethods
         private void ShowMenuNewGame()

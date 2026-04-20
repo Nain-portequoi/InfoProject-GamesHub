@@ -19,6 +19,7 @@ namespace DataBase
             {
                 connection.Open();                                                              // Ouvre la connexion à la base de données (même principe qu'en C où l'on ouvrait le fichier avec fopen)
                 var command = connection.CreateCommand();                                       // Crée une commande SQL pour interagir avec la base de données. C'est grâce à cette variable que l'on va pouvoir exécuter des requêtes SQL sur la base de données
+                CreatePlayersTable(); 
                 command.CommandText = "SELECT Pseudo FROM Players";                             // Sélectionne uniquement la colonne Pseudo de la table Players
                 using (var reader = command.ExecuteReader())                                    // Exécute la requête et lit les résultats
                 {

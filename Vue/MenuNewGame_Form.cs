@@ -41,9 +41,10 @@ namespace NewGameForm
             CcbPlayer1.DropDownStyle = ComboBoxStyle.DropDownList;
             CcbPlayer2.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            MenuNewGame_Form_Load();
         }
 
-        private void MenuNewGame_Form_Load(object sender, EventArgs e)
+        private void MenuNewGame_Form_Load()
         {
             _dataBase = new DataBaseConfig();
             List<Player> players = _dataBase.GetPlayersPseudo();
