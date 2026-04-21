@@ -25,5 +25,25 @@ namespace MenuStatsForm
         {
             _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
         }
+
+        private void RdbShowPlayers_CheckedChanged(object sender, EventArgs e)
+        {
+            SetStatsLocation(new Point(100,100));       // Change the location of the stats group box to be visible when a radio button is checked
+        }
+
+        private void RdbShowGames_CheckedChanged(object sender, EventArgs e)
+        {
+            SetStatsLocation(new Point(100, 100));
+        }
+
+        private void RdbShowRounds_CheckedChanged(object sender, EventArgs e)
+        {
+            SetStatsLocation(new Point(100, 100));
+        }
+
+        private void SetStatsLocation(Point location)
+        {
+            GpbStats.Location = location;
+        }
     }
 }

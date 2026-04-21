@@ -79,8 +79,38 @@ namespace DataBase
             return numberOfPlayers;
         }
 
+        #region DataRetrieval
+        public List<string> GetAllInfos(string fileName, string commandText)
+        {
+            List<string> infos = new List<string>();
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = commandText;                  // "SELECT (*) FROM Players"
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string info = reader.GetString(0);
+                        for (int i = 1; i < reader.FieldCount; i++)
+                        {
+                            info += " - " + reader.GetString(i); 
 
-        #region TableCreation
+                        }
+                        infos.Add(info);
+                    }
+                }
+            }
+            return infos;
+        }
+
+
+        #endregion
+
+
+            #region TableCreation
         private bool CreateTable(string tableName, string columns, string fileName)
         {
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Même commentaire que pour la méthode GetPlayersPseudo()
