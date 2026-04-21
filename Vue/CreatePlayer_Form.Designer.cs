@@ -44,7 +44,7 @@
             // BtnBack
             // 
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBack.Location = new System.Drawing.Point(2061, 217);
+            this.BtnBack.Location = new System.Drawing.Point(51, 103);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(292, 127);
             this.BtnBack.TabIndex = 3;
@@ -58,7 +58,7 @@
             this.lblPseudo.BackColor = System.Drawing.Color.Transparent;
             this.lblPseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPseudo.ForeColor = System.Drawing.Color.Sienna;
-            this.lblPseudo.Location = new System.Drawing.Point(623, 487);
+            this.lblPseudo.Location = new System.Drawing.Point(1055, 679);
             this.lblPseudo.Name = "lblPseudo";
             this.lblPseudo.Size = new System.Drawing.Size(233, 59);
             this.lblPseudo.TabIndex = 5;
@@ -67,7 +67,7 @@
             // TxtPseudo
             // 
             this.TxtPseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPseudo.Location = new System.Drawing.Point(949, 487);
+            this.TxtPseudo.Location = new System.Drawing.Point(1381, 679);
             this.TxtPseudo.Name = "TxtPseudo";
             this.TxtPseudo.Size = new System.Drawing.Size(287, 65);
             this.TxtPseudo.TabIndex = 6;
@@ -77,7 +77,7 @@
             // TxtFirstName
             // 
             this.TxtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFirstName.Location = new System.Drawing.Point(949, 595);
+            this.TxtFirstName.Location = new System.Drawing.Point(1381, 787);
             this.TxtFirstName.Name = "TxtFirstName";
             this.TxtFirstName.Size = new System.Drawing.Size(287, 65);
             this.TxtFirstName.TabIndex = 8;
@@ -89,7 +89,7 @@
             this.lblFirstName.BackColor = System.Drawing.Color.Transparent;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFirstName.ForeColor = System.Drawing.Color.Sienna;
-            this.lblFirstName.Location = new System.Drawing.Point(623, 595);
+            this.lblFirstName.Location = new System.Drawing.Point(1055, 787);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(313, 59);
             this.lblFirstName.TabIndex = 7;
@@ -98,7 +98,7 @@
             // TxtLastName
             // 
             this.TxtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtLastName.Location = new System.Drawing.Point(949, 701);
+            this.TxtLastName.Location = new System.Drawing.Point(1381, 893);
             this.TxtLastName.Name = "TxtLastName";
             this.TxtLastName.Size = new System.Drawing.Size(287, 65);
             this.TxtLastName.TabIndex = 10;
@@ -110,7 +110,7 @@
             this.lblLastName.BackColor = System.Drawing.Color.Transparent;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastName.ForeColor = System.Drawing.Color.Sienna;
-            this.lblLastName.Location = new System.Drawing.Point(623, 701);
+            this.lblLastName.Location = new System.Drawing.Point(1055, 893);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(309, 59);
             this.lblLastName.TabIndex = 9;
@@ -120,7 +120,7 @@
             // 
             this.BtnSaveInformation.Enabled = false;
             this.BtnSaveInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSaveInformation.Location = new System.Drawing.Point(633, 902);
+            this.BtnSaveInformation.Location = new System.Drawing.Point(1065, 1094);
             this.BtnSaveInformation.Name = "BtnSaveInformation";
             this.BtnSaveInformation.Size = new System.Drawing.Size(603, 127);
             this.BtnSaveInformation.TabIndex = 11;
@@ -134,7 +134,7 @@
             this.lblRequired.BackColor = System.Drawing.Color.Transparent;
             this.lblRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequired.ForeColor = System.Drawing.Color.Red;
-            this.lblRequired.Location = new System.Drawing.Point(1242, 487);
+            this.lblRequired.Location = new System.Drawing.Point(1674, 679);
             this.lblRequired.Name = "lblRequired";
             this.lblRequired.Size = new System.Drawing.Size(274, 59);
             this.lblRequired.TabIndex = 12;
@@ -146,7 +146,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(1242, 595);
+            this.label1.Location = new System.Drawing.Point(1674, 787);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(286, 59);
             this.label1.TabIndex = 13;
@@ -158,7 +158,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(1242, 701);
+            this.label2.Location = new System.Drawing.Point(1674, 893);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(286, 59);
             this.label2.TabIndex = 14;

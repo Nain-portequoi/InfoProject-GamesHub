@@ -47,11 +47,11 @@ namespace NewGameForm
         private void MenuNewGame_Form_Load()
         {
             _dataBase = new DataBaseConfig();
-            int numberOfPlayers = _dataBase.GetNumberOfPlayers();
+            int numberOfPlayers = _dataBase.GetNumberOfPlayers(_mainMenu.fileName);
 
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Player player = _dataBase.GetPlayersPseudo(i + 1);
+                Player player = _dataBase.GetPlayersPseudo(i + 1, _mainMenu.fileName);
                 CcbPlayer1.Items.Add(player.Pseudo);
                 CcbPlayer2.Items.Add(player.Pseudo);
             }

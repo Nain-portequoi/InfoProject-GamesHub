@@ -42,7 +42,7 @@
             this.lblGameName.AutoSize = true;
             this.lblGameName.BackColor = System.Drawing.Color.White;
             this.lblGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameName.Location = new System.Drawing.Point(719, 159);
+            this.lblGameName.Location = new System.Drawing.Point(1158, 425);
             this.lblGameName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGameName.Name = "lblGameName";
             this.lblGameName.Size = new System.Drawing.Size(984, 190);
@@ -52,7 +52,7 @@
             // BtnNewGame
             // 
             this.BtnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNewGame.Location = new System.Drawing.Point(216, 713);
+            this.BtnNewGame.Location = new System.Drawing.Point(655, 979);
             this.BtnNewGame.Margin = new System.Windows.Forms.Padding(4);
             this.BtnNewGame.Name = "BtnNewGame";
             this.BtnNewGame.Size = new System.Drawing.Size(372, 170);
@@ -64,7 +64,7 @@
             // BtnStats
             // 
             this.BtnStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnStats.Location = new System.Drawing.Point(669, 713);
+            this.BtnStats.Location = new System.Drawing.Point(1108, 979);
             this.BtnStats.Margin = new System.Windows.Forms.Padding(4);
             this.BtnStats.Name = "BtnStats";
             this.BtnStats.Size = new System.Drawing.Size(372, 170);
@@ -76,7 +76,7 @@
             // BtnCreatePlayer
             // 
             this.BtnCreatePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreatePlayer.Location = new System.Drawing.Point(1113, 713);
+            this.BtnCreatePlayer.Location = new System.Drawing.Point(1552, 979);
             this.BtnCreatePlayer.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCreatePlayer.Name = "BtnCreatePlayer";
             this.BtnCreatePlayer.Size = new System.Drawing.Size(372, 170);
@@ -88,7 +88,7 @@
             // BtnLeave
             // 
             this.BtnLeave.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLeave.Location = new System.Drawing.Point(1566, 713);
+            this.BtnLeave.Location = new System.Drawing.Point(2005, 979);
             this.BtnLeave.Margin = new System.Windows.Forms.Padding(4);
             this.BtnLeave.Name = "BtnLeave";
             this.BtnLeave.Size = new System.Drawing.Size(372, 170);

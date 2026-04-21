@@ -35,12 +35,12 @@ namespace MenuCreatePlayer
         {
             if (WantToSave(sender, e))
             {
-                bool ok = _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "");
-                if (ok)
+                try 
                 {
+                    _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "", "GamesHub.db");
                     _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
                 }
-                else
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error saving player information. \nThe pseudo might already exist !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

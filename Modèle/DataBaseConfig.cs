@@ -12,11 +12,11 @@ namespace DataBase
 {
     public class DataBaseConfig
     {
-        public List<Player> ListPlayersPseudo()
+        public List<Player> ListPlayersPseudo(string fileName)
         {
             List<Player> playersPseudo = new List<Player>();
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db"); // Chemin vers la base de données
-            bool ok = CreatePlayersTable();
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
+            bool ok = CreatePlayersTable(fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))             // Crée une connexion à la base de données SQLite
             {
                 connection.Open();                                                              // Ouvre la connexion à la base de données (même principe qu'en C où l'on ouvrait le fichier avec fopen)
@@ -36,17 +36,17 @@ namespace DataBase
             }
             return playersPseudo;
         }
-        public Player GetPlayersPseudo(int playerId)
+        public Player GetPlayersPseudo(int playerId, string fileName)
         {
             Player player;
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db"); // Chemin vers la base de données
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
 
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
                 connection.Open();
                 var command = connection.CreateCommand();
                 command.CommandText = "SELECT Pseudo FROM Players WHERE PlayerId = @playerId";
-                command.Parameters.AddWithValue("@playerId", playerId);
+                command.Parameters.AddWithValue("@playerId", playerId);                         // Ajoute un paramètre à la requête SQL pour éviter les injections SQL. Le paramètre @playerId est remplacé par la valeur de playerId lors de l'exécution de la requête.
                 using (var reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -58,10 +58,10 @@ namespace DataBase
             return null;
         }
 
-        public int GetNumberOfPlayers()
+        public int GetNumberOfPlayers(string fileName)
         {
             int numberOfPlayers = 0;
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db"); // Chemin vers la base de données
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
                 connection.Open();
@@ -81,9 +81,9 @@ namespace DataBase
 
 
         #region TableCreation
-        private bool CreateTable(string tableName, string columns)
+        private bool CreateTable(string tableName, string columns, string fileName)
         {
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db"); // Même commentaire que pour la méthode GetPlayersPseudo()
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Même commentaire que pour la méthode GetPlayersPseudo()
             using (var connection = new SQLiteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();                                                              // Même commentaire que pour la méthode GetPlayersPseudo()
@@ -101,27 +101,27 @@ namespace DataBase
                 }
             }
         }
-        public bool CreatePlayersTable()
+        public bool CreatePlayersTable(string fileName)
         {
             string columns = "PlayerId INTEGER PRIMARY KEY AUTOINCREMENT, Pseudo TEXT NOT NULL, FirstName TEXT, LastName TEXT, ScoreTot INTEGER, Results TEXT, UNIQUE(Pseudo)";
-            return CreateTable("Players", columns);
+            return CreateTable("Players", columns, fileName);
         }
-        public bool CreateGameTable()
+        public bool CreateGameTable(string fileName)
         {
             string columns = "GameID INTEGER PRIMARY KEY AUTOINCREMENT, GameName TEXT NOT NULL, UNIQUE(GameName)";
-            return CreateTable("Game", columns);
+            return CreateTable("Game", columns, fileName);
         }
-        public bool CreateRoundTable()
+        public bool CreateRoundTable(string fileName)
         {
             string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER REFERENCES Players(PlayerId)";
-            return CreateTable("Round", columns);
+            return CreateTable("Round", columns, fileName);
         }
         #endregion
 
         #region DataInsertion
-        public bool InsertPlayer(string pseudo, string firstName, string lastName, int scoreTot, string results)
+        public void InsertPlayer(string pseudo, string firstName, string lastName, int scoreTot, string results, string fileName)
         {
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db");
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
                 connection.Open();
@@ -135,21 +135,20 @@ namespace DataBase
                 try
                 {
                     command.ExecuteNonQuery();
-                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error inserting player: {ex.Message}");
-                    return false;
+                    throw ex;
                 }
             }
         }
         #endregion
 
         #region DataDeletion
-        public bool DeletePlayer(int playerId)
+        public bool DeletePlayer(int playerId, string fileName)
         {
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db");
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
                 connection.Open();
@@ -169,9 +168,9 @@ namespace DataBase
             }
         }
 
-        public bool DeleteAllPlayers()
+        public bool DeleteAllPlayers(string fileName)
         {
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GamesHub.db");
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
                 connection.Open();
