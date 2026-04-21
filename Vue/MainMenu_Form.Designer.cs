@@ -29,7 +29,6 @@
         
         private void InitializeComponent()
         {
-            this.lblGameName = new System.Windows.Forms.Label();
             this.BtnNewGame = new System.Windows.Forms.Button();
             this.BtnStats = new System.Windows.Forms.Button();
             this.BtnCreatePlayer = new System.Windows.Forms.Button();
@@ -37,64 +36,60 @@
             this.PnlHost = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // lblGameName
-            // 
-            this.lblGameName.AutoSize = true;
-            this.lblGameName.BackColor = System.Drawing.Color.White;
-            this.lblGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameName.Location = new System.Drawing.Point(1158, 425);
-            this.lblGameName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblGameName.Name = "lblGameName";
-            this.lblGameName.Size = new System.Drawing.Size(984, 190);
-            this.lblGameName.TabIndex = 0;
-            this.lblGameName.Text = "GameName";
-            // 
             // BtnNewGame
             // 
+            this.BtnNewGame.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNewGame.ForeColor = System.Drawing.Color.SaddleBrown;
             this.BtnNewGame.Location = new System.Drawing.Point(655, 979);
             this.BtnNewGame.Margin = new System.Windows.Forms.Padding(4);
             this.BtnNewGame.Name = "BtnNewGame";
             this.BtnNewGame.Size = new System.Drawing.Size(372, 170);
             this.BtnNewGame.TabIndex = 1;
             this.BtnNewGame.Text = "New Game";
-            this.BtnNewGame.UseVisualStyleBackColor = true;
+            this.BtnNewGame.UseVisualStyleBackColor = false;
             this.BtnNewGame.Click += new System.EventHandler(this.BtnNewGame_Click);
             // 
             // BtnStats
             // 
+            this.BtnStats.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnStats.ForeColor = System.Drawing.Color.SaddleBrown;
             this.BtnStats.Location = new System.Drawing.Point(1108, 979);
             this.BtnStats.Margin = new System.Windows.Forms.Padding(4);
             this.BtnStats.Name = "BtnStats";
             this.BtnStats.Size = new System.Drawing.Size(372, 170);
             this.BtnStats.TabIndex = 2;
             this.BtnStats.Text = "Stats";
-            this.BtnStats.UseVisualStyleBackColor = true;
+            this.BtnStats.UseVisualStyleBackColor = false;
             this.BtnStats.Click += new System.EventHandler(this.BtnStats_Click);
             // 
             // BtnCreatePlayer
             // 
+            this.BtnCreatePlayer.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnCreatePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCreatePlayer.ForeColor = System.Drawing.Color.SaddleBrown;
             this.BtnCreatePlayer.Location = new System.Drawing.Point(1552, 979);
             this.BtnCreatePlayer.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCreatePlayer.Name = "BtnCreatePlayer";
             this.BtnCreatePlayer.Size = new System.Drawing.Size(372, 170);
             this.BtnCreatePlayer.TabIndex = 3;
             this.BtnCreatePlayer.Text = "Create Player";
-            this.BtnCreatePlayer.UseVisualStyleBackColor = true;
+            this.BtnCreatePlayer.UseVisualStyleBackColor = false;
             this.BtnCreatePlayer.Click += new System.EventHandler(this.BtnCreatePlayer_Click);
             // 
             // BtnLeave
             // 
+            this.BtnLeave.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnLeave.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLeave.ForeColor = System.Drawing.Color.SaddleBrown;
             this.BtnLeave.Location = new System.Drawing.Point(2005, 979);
             this.BtnLeave.Margin = new System.Windows.Forms.Padding(4);
             this.BtnLeave.Name = "BtnLeave";
             this.BtnLeave.Size = new System.Drawing.Size(372, 170);
             this.BtnLeave.TabIndex = 4;
             this.BtnLeave.Text = "Leave";
-            this.BtnLeave.UseVisualStyleBackColor = true;
+            this.BtnLeave.UseVisualStyleBackColor = false;
             this.BtnLeave.Click += new System.EventHandler(this.BtnLeave_Click);
             // 
             // PnlHost
@@ -111,7 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
-            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Menu_PrincipalImage;
+            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Menu_Principale___Image_GamesHub___Projet_d_info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(2116, 1191);
             this.Controls.Add(this.PnlHost);
@@ -119,19 +114,15 @@
             this.Controls.Add(this.BtnCreatePlayer);
             this.Controls.Add(this.BtnStats);
             this.Controls.Add(this.BtnNewGame);
-            this.Controls.Add(this.lblGameName);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMenu_Form";
             this.Text = "MainMenu_Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblGameName;
         private System.Windows.Forms.Button BtnNewGame;
         private System.Windows.Forms.Button BtnStats;
         private System.Windows.Forms.Button BtnCreatePlayer;

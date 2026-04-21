@@ -41,20 +41,22 @@
             // 
             // BtnBack
             // 
+            this.BtnBack.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBack.Location = new System.Drawing.Point(1775, 85);
+            this.BtnBack.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.BtnBack.Location = new System.Drawing.Point(50, 100);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(292, 127);
             this.BtnBack.TabIndex = 2;
             this.BtnBack.Text = "Back";
-            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.UseVisualStyleBackColor = false;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // CcbPlayer1
             // 
             this.CcbPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CcbPlayer1.FormattingEnabled = true;
-            this.CcbPlayer1.Location = new System.Drawing.Point(310, 382);
+            this.CcbPlayer1.Location = new System.Drawing.Point(847, 652);
             this.CcbPlayer1.Name = "CcbPlayer1";
             this.CcbPlayer1.Size = new System.Drawing.Size(371, 67);
             this.CcbPlayer1.TabIndex = 3;
@@ -63,8 +65,10 @@
             // lblSelectPlayer1
             // 
             this.lblSelectPlayer1.AutoSize = true;
+            this.lblSelectPlayer1.BackColor = System.Drawing.Color.Transparent;
             this.lblSelectPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectPlayer1.Location = new System.Drawing.Point(300, 308);
+            this.lblSelectPlayer1.ForeColor = System.Drawing.Color.Sienna;
+            this.lblSelectPlayer1.Location = new System.Drawing.Point(837, 578);
             this.lblSelectPlayer1.Name = "lblSelectPlayer1";
             this.lblSelectPlayer1.Size = new System.Drawing.Size(381, 59);
             this.lblSelectPlayer1.TabIndex = 4;
@@ -73,8 +77,10 @@
             // lblSelectPlayer2
             // 
             this.lblSelectPlayer2.AutoSize = true;
+            this.lblSelectPlayer2.BackColor = System.Drawing.Color.Transparent;
             this.lblSelectPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectPlayer2.Location = new System.Drawing.Point(1212, 308);
+            this.lblSelectPlayer2.ForeColor = System.Drawing.Color.Sienna;
+            this.lblSelectPlayer2.Location = new System.Drawing.Point(1749, 578);
             this.lblSelectPlayer2.Name = "lblSelectPlayer2";
             this.lblSelectPlayer2.Size = new System.Drawing.Size(381, 59);
             this.lblSelectPlayer2.TabIndex = 6;
@@ -84,7 +90,7 @@
             // 
             this.CcbPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CcbPlayer2.FormattingEnabled = true;
-            this.CcbPlayer2.Location = new System.Drawing.Point(1222, 382);
+            this.CcbPlayer2.Location = new System.Drawing.Point(1759, 652);
             this.CcbPlayer2.Name = "CcbPlayer2";
             this.CcbPlayer2.Size = new System.Drawing.Size(371, 67);
             this.CcbPlayer2.TabIndex = 5;
@@ -93,8 +99,10 @@
             // lblSelectGame
             // 
             this.lblSelectGame.AutoSize = true;
+            this.lblSelectGame.BackColor = System.Drawing.Color.Transparent;
             this.lblSelectGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectGame.Location = new System.Drawing.Point(805, 708);
+            this.lblSelectGame.ForeColor = System.Drawing.Color.Sienna;
+            this.lblSelectGame.Location = new System.Drawing.Point(1336, 854);
             this.lblSelectGame.Name = "lblSelectGame";
             this.lblSelectGame.Size = new System.Drawing.Size(359, 59);
             this.lblSelectGame.TabIndex = 7;
@@ -103,7 +111,7 @@
             // BtnPictionary
             // 
             this.BtnPictionary.Enabled = false;
-            this.BtnPictionary.Location = new System.Drawing.Point(387, 813);
+            this.BtnPictionary.Location = new System.Drawing.Point(918, 959);
             this.BtnPictionary.Name = "BtnPictionary";
             this.BtnPictionary.Size = new System.Drawing.Size(349, 391);
             this.BtnPictionary.TabIndex = 8;
@@ -114,7 +122,7 @@
             // BtnBlackJack
             // 
             this.BtnBlackJack.Enabled = false;
-            this.BtnBlackJack.Location = new System.Drawing.Point(1244, 813);
+            this.BtnBlackJack.Location = new System.Drawing.Point(1775, 959);
             this.BtnBlackJack.Name = "BtnBlackJack";
             this.BtnBlackJack.Size = new System.Drawing.Size(349, 391);
             this.BtnBlackJack.TabIndex = 9;
@@ -135,6 +143,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Peru;
+            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.New_Game___Image_GamesHub___Projet_d_info;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.PnlMenuNewGame);
             this.Controls.Add(this.BtnBlackJack);
             this.Controls.Add(this.BtnPictionary);

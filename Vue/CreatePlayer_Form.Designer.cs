@@ -43,13 +43,15 @@
             // 
             // BtnBack
             // 
+            this.BtnBack.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBack.Location = new System.Drawing.Point(51, 103);
+            this.BtnBack.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.BtnBack.Location = new System.Drawing.Point(50, 100);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(292, 127);
             this.BtnBack.TabIndex = 3;
             this.BtnBack.Text = "Back";
-            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.UseVisualStyleBackColor = false;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // lblPseudo
@@ -118,14 +120,16 @@
             // 
             // BtnSaveInformation
             // 
+            this.BtnSaveInformation.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnSaveInformation.Enabled = false;
             this.BtnSaveInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSaveInformation.ForeColor = System.Drawing.Color.SaddleBrown;
             this.BtnSaveInformation.Location = new System.Drawing.Point(1065, 1094);
             this.BtnSaveInformation.Name = "BtnSaveInformation";
             this.BtnSaveInformation.Size = new System.Drawing.Size(603, 127);
             this.BtnSaveInformation.TabIndex = 11;
             this.BtnSaveInformation.Text = "Save Information";
-            this.BtnSaveInformation.UseVisualStyleBackColor = true;
+            this.BtnSaveInformation.UseVisualStyleBackColor = false;
             this.BtnSaveInformation.Click += new System.EventHandler(this.BtnSaveInformation_Click);
             // 
             // lblRequired

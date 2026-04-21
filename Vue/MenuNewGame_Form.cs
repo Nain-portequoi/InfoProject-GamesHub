@@ -31,7 +31,9 @@ namespace NewGameForm
         }
 
         private static string _selectedPlayer1 = null;
+        private static string _selectedPlayer1Previous = null;
         private static string _selectedPlayer2 = null;
+        private static string _selectedPlayer2Previous = null;
         #endregion
 
         public MenuNewGame_Form(MainMenu_Form mainMenu)
@@ -110,6 +112,9 @@ namespace NewGameForm
             _selectedPlayer1 = CcbPlayer1.SelectedItem.ToString();
             
             EnableStartGameButtons();
+            DeletaPlayerFromComboBoxIfChosen(_selectedPlayer1, CcbPlayer2);
+            AddPlayerBackToComboBox(_selectedPlayer1Previous, CcbPlayer2);
+            _selectedPlayer1Previous = _selectedPlayer1;
         }
 
         private void CcbPlayer2_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,6 +122,25 @@ namespace NewGameForm
             _selectedPlayer2 = CcbPlayer2.SelectedItem.ToString();
 
             EnableStartGameButtons();
+            DeletaPlayerFromComboBoxIfChosen(_selectedPlayer2, CcbPlayer1);
+            AddPlayerBackToComboBox(_selectedPlayer2Previous, CcbPlayer1);
+            _selectedPlayer2Previous = _selectedPlayer2;
+        }
+
+        private void DeletaPlayerFromComboBoxIfChosen(string selectedPlayer, ComboBox comboBox)
+        {
+            if (selectedPlayer != null)
+            {
+                comboBox.Items.Remove(selectedPlayer);
+            }
+        }
+
+        private void AddPlayerBackToComboBox(string player, ComboBox comboBox)
+        {
+            if (player != null && !comboBox.Items.Contains(player))
+            {
+                comboBox.Items.Add(player);
+            }
         }
 
     }
