@@ -88,15 +88,15 @@ namespace DataBase
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = commandText;                  // "SELECT (*) FROM Players"
+                command.CommandText = commandText;                  // "SELECT * FROM Players"
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string info = reader.GetString(0);
+                        string info = reader[0].ToString();
                         for (int i = 1; i < reader.FieldCount; i++)
                         {
-                            info += " - " + reader.GetString(i); 
+                            info += "\t\t" + reader[i].ToString(); 
 
                         }
                         infos.Add(info);
@@ -110,7 +110,7 @@ namespace DataBase
         #endregion
 
 
-            #region TableCreation
+        #region TableCreation
         private bool CreateTable(string tableName, string columns, string fileName)
         {
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Même commentaire que pour la méthode GetPlayersPseudo()
@@ -139,7 +139,7 @@ namespace DataBase
         public bool CreateGameTable(string fileName)
         {
             string columns = "GameID INTEGER PRIMARY KEY AUTOINCREMENT, GameName TEXT NOT NULL, UNIQUE(GameName)";
-            return CreateTable("Game", columns, fileName);
+            return CreateTable("Games", columns, fileName);
         }
         public bool CreateRoundTable(string fileName)
         {
