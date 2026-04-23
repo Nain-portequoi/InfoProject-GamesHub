@@ -40,9 +40,9 @@ namespace MenuStatsForm
         private void RdbShowPlayers_CheckedChanged(object sender, EventArgs e)
         {
             SetStatsLocation(_nextLocation);       // Change the location of the stats group box when a radio button is checked
-            SetRichTxtStatsVisible(true);
+            SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
-            RichTxtStats.Text = "Player ID \tPseudo \tFirst Name \tLast Name \tTotal Score \tResults \n";
+            RichTxtStats.Text = "Player ID \tPseudo \tFirst Name Last Name \tTotal Score \tResults \n";
             WriteRichTxtStats("SELECT * FROM Players");
         }
 
@@ -51,7 +51,7 @@ namespace MenuStatsForm
         private void RdbShowGames_CheckedChanged(object sender, EventArgs e)
         {
             SetStatsLocation(_nextLocation);
-            SetRichTxtStatsVisible(true);
+            SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
             WriteRichTxtStats("SELECT * FROM Games");
         }
@@ -59,7 +59,7 @@ namespace MenuStatsForm
         private void RdbShowRounds_CheckedChanged(object sender, EventArgs e)
         {
             SetStatsLocation(_nextLocation);
-            SetRichTxtStatsVisible(true);
+            SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
             WriteRichTxtStats("SELECT * FROM Rounds");
         }
@@ -69,9 +69,21 @@ namespace MenuStatsForm
             GpbStats.Location = location;
         }
 
-        private void SetRichTxtStatsVisible(bool visible)
+        private void SetRichTxtStatsAndSearchVisible(bool visible)
         {
             RichTxtStats.Visible = visible;
+            pctSearch.Visible = visible;
+            lblSearch.Visible = visible;
+            txtSearchBox.Visible = visible;
+        }
+
+        private void txtSearchBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                string command = txtSearchBox.Text;
+                MessageBox.Show("Search command: " + command);
+            }
         }
     }
 }

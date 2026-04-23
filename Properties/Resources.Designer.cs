@@ -63,6 +63,16 @@ namespace InfoProject_GamesHub.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icone_de_Recherche___Projet_Info___GamesHub {
+            get {
+                object obj = ResourceManager.GetObject("Icone de Recherche - Projet Info - GamesHub", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Menu_Principale___Image_GamesHub___Projet_d_info {
             get {
                 object obj = ResourceManager.GetObject("Menu Principale - Image GamesHub - Projet d\'info", resourceCulture);

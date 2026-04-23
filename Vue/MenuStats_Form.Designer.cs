@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnBack = new System.Windows.Forms.Button();
             this.GpbStats = new System.Windows.Forms.GroupBox();
             this.RdbShowRounds = new System.Windows.Forms.RadioButton();
             this.RdbShowGames = new System.Windows.Forms.RadioButton();
             this.RdbShowPlayers = new System.Windows.Forms.RadioButton();
             this.RichTxtStats = new System.Windows.Forms.RichTextBox();
+            this.txtSearchBox = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pctSearch = new System.Windows.Forms.PictureBox();
             this.GpbStats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnBack
@@ -116,12 +123,55 @@
             this.RichTxtStats.Text = "";
             this.RichTxtStats.Visible = false;
             // 
+            // txtSearchBox
+            // 
+            this.txtSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchBox.Location = new System.Drawing.Point(1925, 631);
+            this.txtSearchBox.Multiline = true;
+            this.txtSearchBox.Name = "txtSearchBox";
+            this.txtSearchBox.Size = new System.Drawing.Size(487, 164);
+            this.txtSearchBox.TabIndex = 7;
+            this.txtSearchBox.Visible = false;
+            this.txtSearchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchBox_KeyPress);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.Color.Transparent;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Location = new System.Drawing.Point(1917, 580);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(152, 48);
+            this.lblSearch.TabIndex = 8;
+            this.lblSearch.Text = "Search";
+            this.lblSearch.Visible = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pctSearch
+            // 
+            this.pctSearch.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Icone_de_Recherche___Projet_Info___GamesHub;
+            this.pctSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctSearch.Location = new System.Drawing.Point(2075, 569);
+            this.pctSearch.Name = "pctSearch";
+            this.pctSearch.Size = new System.Drawing.Size(56, 59);
+            this.pctSearch.TabIndex = 9;
+            this.pctSearch.TabStop = false;
+            this.pctSearch.Visible = false;
+            // 
             // MenuStats_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Stats_Menu___Image_GamesHub___Projet_d_info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.pctSearch);
+            this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.txtSearchBox);
             this.Controls.Add(this.GpbStats);
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.RichTxtStats);
@@ -130,7 +180,9 @@
             this.Size = new System.Drawing.Size(2140, 1360);
             this.GpbStats.ResumeLayout(false);
             this.GpbStats.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctSearch)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,5 +193,10 @@
         private System.Windows.Forms.RadioButton RdbShowRounds;
         private System.Windows.Forms.RadioButton RdbShowGames;
         private System.Windows.Forms.RichTextBox RichTxtStats;
+        private System.Windows.Forms.TextBox txtSearchBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox pctSearch;
     }
 }
