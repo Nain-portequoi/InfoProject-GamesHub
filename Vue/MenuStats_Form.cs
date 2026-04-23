@@ -83,6 +83,15 @@ namespace MenuStatsForm
             {
                 string command = txtSearchBox.Text;
                 MessageBox.Show("Search command: " + command);
+                RichTxtStats.Clear();
+                try
+                {
+                    WriteRichTxtStats(command);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while executing the search command.\n\tError: " + ex.Message);
+                }
             }
         }
     }

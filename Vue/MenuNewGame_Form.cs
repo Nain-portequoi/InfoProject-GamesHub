@@ -61,8 +61,11 @@ namespace NewGameForm
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
+            _selectedPlayer1 = null;
+            _selectedPlayer1Previous = null;
+            _selectedPlayer2 = null;
+            _selectedPlayer2Previous = null;
             _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
-            
         }
 
         private void EnableStartGameButtons()

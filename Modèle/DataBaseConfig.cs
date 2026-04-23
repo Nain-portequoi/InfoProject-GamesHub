@@ -88,22 +88,29 @@ namespace DataBase
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = commandText;                  // "SELECT * FROM Players"
-                using (var reader = command.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    command.CommandText = commandText;                  // "SELECT * FROM Players"
+                    using (var reader = command.ExecuteReader())
                     {
-                        string info = reader[0].ToString();
-                        for (int i = 1; i < reader.FieldCount; i++)
+                        while (reader.Read())
                         {
-                            info += "\t\t" + reader[i].ToString(); 
+                            string info = reader[0].ToString();
+                            for (int i = 1; i < reader.FieldCount; i++)
+                            {
+                                info += "\t\t" + reader[i].ToString();
 
+                            }
+                            infos.Add(info);
                         }
-                        infos.Add(info);
                     }
                 }
-            }
+                catch (Exception ex) 
+                { 
+                    throw new Exception($"Error executing query: {ex.Message}");
+                }
             return infos;
+            }
         }
 
 
