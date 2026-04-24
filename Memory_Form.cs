@@ -1,4 +1,4 @@
-﻿using Memory_Pierre.Modele;
+﻿using Memory_Pierre;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

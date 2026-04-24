@@ -66,6 +66,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modèle\Carte.cs" />
+    <Compile Include="Memory_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Memory_Form.Designer.cs">
+      <DependentUpon>Memory_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modèle\Player.cs" />
     <Compile Include="Vue\MenuStats_Form.cs">
       <SubType>UserControl</SubType>
@@ -94,6 +101,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Memory_Form.resx">
+      <DependentUpon>Memory_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vue\MenuStats_Form.resx">
       <DependentUpon>MenuStats_Form.cs</DependentUpon>
     </EmbeddedResource>
