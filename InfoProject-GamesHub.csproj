@@ -80,12 +80,6 @@
     <Compile Include="Vue\CreatePlayer_Form.Designer.cs">
       <DependentUpon>CreatePlayer_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vue\Memory_Form.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Vue\Memory_Form.Designer.cs">
-      <DependentUpon>Memory_Form.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vue\MainMenu_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,9 +99,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\CreatePlayer_Form.resx">
       <DependentUpon>CreatePlayer_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vue\Memory_Form.resx">
-      <DependentUpon>Memory_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\MainMenu_Form.resx">
       <DependentUpon>MainMenu_Form.cs</DependentUpon>
