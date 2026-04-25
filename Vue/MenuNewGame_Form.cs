@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainMenuForm;
-//using MemoryForm;
+using Memory_Pierre;
 using DataBase;
 using PlayerInformation;
 
@@ -86,7 +86,7 @@ namespace NewGameForm
         #region GameSelection
         private void BtnPictionary_Click(object sender, EventArgs e)
         {
-            //ShowMemory();
+            ShowMemory();
         }
 
         private void BtnBlackJack_Click(object sender, EventArgs e)
@@ -97,15 +97,15 @@ namespace NewGameForm
         #endregion
 
         #region ShowMenu
-        //private void ShowMemory()
-        //{
-        //    _mainMenu.SetPanel(PnlMenuNewGame);
+        private void ShowMemory()
+        {
+            _mainMenu.SetPanel(PnlMenuNewGame);
 
-        //    Memory_Form memoryForm = new Memory_Form(this);
-        //    memoryForm.Dock = DockStyle.Fill;
+            Memory_Form memoryForm = new Memory_Form(this, _mainMenu);
+            memoryForm.Dock = DockStyle.Fill;
 
-        //    PnlMenuNewGame.Controls.Add(memoryForm);
-        //}
+            PnlMenuNewGame.Controls.Add(memoryForm);
+        }
 
 
         #endregion

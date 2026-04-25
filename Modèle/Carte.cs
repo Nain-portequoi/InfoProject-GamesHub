@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Memory_Pierre.Modele
+namespace MemoryCard
 {
     public class Card
     {

@@ -1,4 +1,4 @@
-﻿using Memory_Pierre;
+﻿using MemoryCard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,24 +9,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using NewGameForm;
+using MainMenuForm;
 
 namespace Memory_Pierre
 {
-    public partial class Memory_Form : Form
+    public partial class Memory_Form : UserControl
     {
         private ImageCollection _imageCollection;
         private List<Button> InterfaceButton;
         private Game _game;
         int x = 0;
-        public Memory_Form()
+        private readonly MenuNewGame_Form _menuNewGame;
+        private readonly MainMenu_Form _mainMenu;
+
+        public Memory_Form(MenuNewGame_Form menuNewGame, MainMenu_Form mainMenu)
         {
             InitializeComponent();
+            _menuNewGame = menuNewGame;
+            _mainMenu = mainMenu;
             _imageCollection = new ImageCollection();
             _game = new Game(_imageCollection);
             _game.SetUpGame();
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
             ConnectCardToButton(InterfaceButton, _imageCollection.GetImageCollection());
             PutImageRecto(InterfaceButton);
+
         }
         private void ConnectCardToButton(List<Button> Button, List<Card> Card)
         {
@@ -50,9 +58,9 @@ namespace Memory_Pierre
             Card carte = (Card)btn.Tag;
             // On va chercher l'image dans les ressources grâce au nom
             // On utilise Properties.Resources.ResourceManager.GetObject(nom)
-            object ressourceImage = Properties.Resources.ResourceManager.GetObject(carte.GetNameImage());
+            object ressourceImage = InfoProject_GamesHub.Properties.Resources.ResourceManager.GetObject(carte.GetNameImage());
 
-            
+
             if (ressourceImage != null)
             {
                 btn.BackgroundImage = (Image)ressourceImage;
@@ -63,7 +71,7 @@ namespace Memory_Pierre
 
         private void HideImage(Button btn)
         {
-            object ImageRecto = Properties.Resources.ResourceManager.GetObject("Recto");
+            object ImageRecto = InfoProject_GamesHub.Properties.Resources.ResourceManager.GetObject("Recto");
             btn.BackgroundImage = (Image)ImageRecto;
             btn.BackgroundImageLayout = ImageLayout.Stretch;
         }
@@ -103,6 +111,11 @@ namespace Memory_Pierre
                     HideImage(button);
                 }
             }
+        }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
         }
     }
 }

@@ -67,10 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modèle\Carte.cs" />
-    <Compile Include="Memory_Form.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Vue\Memory_Form.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Memory_Form.Designer.cs">
+    <Compile Include="Vue\Memory_Form.Designer.cs">
       <DependentUpon>Memory_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Modèle\Player.cs" />
@@ -101,7 +101,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Memory_Form.resx">
+    <EmbeddedResource Include="Vue\Memory_Form.resx">
       <DependentUpon>Memory_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\MenuStats_Form.resx">
