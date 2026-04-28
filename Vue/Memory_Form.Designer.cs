@@ -263,7 +263,6 @@
             this.BtnBack.TabIndex = 22;
             this.BtnBack.Text = "Back";
             this.BtnBack.UseVisualStyleBackColor = false;
-            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // Memory_Form
             // 
@@ -294,7 +293,7 @@
             this.Controls.Add(this.BtnCard2);
             this.Controls.Add(this.BtnCard1);
             this.Name = "Memory_Form";
-            this.Size = new System.Drawing.Size(1208, 670);
+            this.Size = new System.Drawing.Size(1185, 670);
             this.ResumeLayout(false);
             this.PerformLayout();
 

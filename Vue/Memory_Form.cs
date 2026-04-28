@@ -31,14 +31,8 @@ namespace Memory_Pierre
             InitializeComponent();
             _menuNewGame = menuNewGame;
             _mainMenu = mainMenu;
-            _imageCollection = new ImageCollection();
-            _game = new MemoryGame(_imageCollection);
-            _game.SetUpGame();
-            SetUpNameAndColorPlayer();
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
-            ConnectCardToButton(InterfaceButton, _imageCollection.GetImageCollection());
-            PutImageRecto(InterfaceButton);
-
+            CreateNewGame();
         }
         private void ConnectCardToButton(List<Button> Button, List<Card> Card)
         {
@@ -79,11 +73,11 @@ namespace Memory_Pierre
             btn.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        
         private void AnyButtonClick(object sender, EventArgs e)
         {
             Button buttonClicked = (Button)sender;
             Card CardClicked = (Card)buttonClicked.Tag;
+           
             switch (_game.SelectCard(CardClicked))
             {
                 case MemoryGame.FlipResult.Match:
@@ -95,10 +89,34 @@ namespace Memory_Pierre
                 case MemoryGame.FlipResult.NoMatch:
                     ColorNextPlayer();
                     break;
+                case MemoryGame.FlipResult.GameFinish:
+                    ShowAndHideCard(InterfaceButton); // Pour quand même montrer les deux dernières cartes 
+                    GameFinish();
+                    break;
             }
             ShowAndHideCard(InterfaceButton);
         }
-        public void SetUpNameAndColorPlayer()
+        private void GameFinish()
+        {
+            if (pbPlayer1.Value > pbPlayer2.Value)
+            {
+                MessageBox.Show($"The game is finish, {_menuNewGame.GetPseudo1()} won the game !");
+            }
+            else
+            {
+                MessageBox.Show($"The game is finish, {_menuNewGame.GetPseudo2()} won the game ");
+            }
+            DialogResult dialogResult = MessageBox.Show("Do you want playing a new game ?", "NewGame" , MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.No)
+            {
+                _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
+            }
+            else
+            {
+                CreateNewGame();
+            }
+        }
+        private void SetUpNameAndColorPlayer()
         {
             lblPlayer1.Text = _menuNewGame.GetPseudo1();
             lblPlayer2.Text = _menuNewGame.GetPseudo2();
@@ -134,7 +152,18 @@ namespace Memory_Pierre
                 }
             }
         }
-
+        private void CreateNewGame()
+        {
+            _imageCollection = new ImageCollection();
+            _game = new MemoryGame(_imageCollection);
+            _game.SetUpGame();
+            ConnectCardToButton(InterfaceButton, _imageCollection.GetImageCollection());
+            PutImageRecto(InterfaceButton);
+            pbPlayer1.Value = 0;
+            pbPlayer2.Value = 0;
+            SetUpNameAndColorPlayer();
+            ShowAndHideCard(InterfaceButton);
+        }
         private void BtnBack_Click(object sender, EventArgs e)
         {
             _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);

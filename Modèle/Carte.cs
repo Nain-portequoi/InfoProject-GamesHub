@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MemoryCard
 {
@@ -137,6 +138,7 @@ namespace MemoryCard
     {
         private ImageCollection _imageCollection = new ImageCollection();
         private List<Card> _currentSelectedCard;
+        private int _pairsFound = 0;
         
 
         public MemoryGame(ImageCollection imageCollection)
@@ -149,11 +151,14 @@ namespace MemoryCard
             _imageCollection.CreatePileOfCard();
             _imageCollection.MixCard();
         }
+        
         public enum FlipResult
         {
             Match,
             NoMatch,
-            FirstCard
+            FirstCard,
+            GameFinish
+               
         }
         public FlipResult SelectCard(Card cardSelected)
         {
@@ -177,6 +182,11 @@ namespace MemoryCard
                     _currentSelectedCard[0].SetIsMatched(true);
                     _currentSelectedCard[1].SetIsMatched(true);
                     _currentSelectedCard.Clear();
+                    _pairsFound = _pairsFound + 1; 
+                    if(_pairsFound == 9)
+                    {
+                        return FlipResult.GameFinish;
+                    }
                     return FlipResult.Match;
                 }
                 else
@@ -188,6 +198,7 @@ namespace MemoryCard
             _currentSelectedCard.Add(cardSelected);            
             return FlipResult.FirstCard;
         }
+        
     }
     
 }
