@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using DataBase;
 
 
 namespace Memory_Pierre
@@ -23,6 +24,7 @@ namespace Memory_Pierre
         private MemoryGame _game;
         private readonly MenuNewGame_Form _menuNewGame;
         private readonly MainMenu_Form _mainMenu;
+        private readonly DataBaseConfig _database;
 
         public Memory_Form(MenuNewGame_Form menuNewGame, MainMenu_Form mainMenu)
         {
@@ -52,7 +54,6 @@ namespace Memory_Pierre
             {
                 HideImage(BtnCard);
             }
-
         }
         private void ShowImage(Button btn)
         {
