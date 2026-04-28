@@ -32,7 +32,7 @@ namespace Memory_Pierre
             _imageCollection = new ImageCollection();
             _game = new MemoryGame(_imageCollection);
             _game.SetUpGame();
-            SetUpColorPlayer();
+            SetUpNameAndColorPlayer();
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
             ConnectCardToButton(InterfaceButton, _imageCollection.GetImageCollection());
             PutImageRecto(InterfaceButton);
@@ -97,8 +97,10 @@ namespace Memory_Pierre
             }
             ShowAndHideCard(InterfaceButton);
         }
-        public void SetUpColorPlayer()
+        public void SetUpNameAndColorPlayer()
         {
+            lblPlayer1.Text = _menuNewGame.GetPseudo1();
+            lblPlayer2.Text = _menuNewGame.GetPseudo2();
             lblPlayer1.ForeColor = Color.Green;
             lblPlayer2.ForeColor = Color.Red;
         }

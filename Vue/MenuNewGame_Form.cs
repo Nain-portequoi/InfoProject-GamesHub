@@ -81,7 +81,14 @@ namespace NewGameForm
                 BtnBlackJack.Enabled = false;
             }
         }
-
+        public string GetPseudo1()
+        {
+            return _selectedPlayer1;
+        }
+        public string GetPseudo2()
+        {
+            return _selectedPlayer2;
+        }
 
         #region GameSelection
         private void BtnPictionary_Click(object sender, EventArgs e)
