@@ -53,75 +53,22 @@ namespace MemoryCard
         }
         
     }
-    
-    public class Game
-    {
-        private ImageCollection _imageCollection = new ImageCollection();
-        private List<Card> _currentSelectedCard;
-        
-
-        public Game(ImageCollection imageCollection)
-        {
-            _imageCollection = imageCollection;
-            _currentSelectedCard = new List<Card>();
-        }
-        public void SetUpGame()
-        {
-            _imageCollection.CreatePileOfCard();
-            _imageCollection.MixCard();
-        }
-        public enum FlipResult
-        {
-            Match,
-            NoMatch,
-            FirstCard
-        }
-        public FlipResult SelectCard(Card cardSelected)
-        {
-            if (cardSelected.GetIsReturn() && _currentSelectedCard.Count !=2 ) // Si jamais on clique sur une carte déjà retourné ! 
-            {
-                return FlipResult.FirstCard;
-            }
-            if (_currentSelectedCard.Count == 2) // Comme ça on laisse les cartes visibles jusqu'au troisième cliques ! 
-            {
-                _currentSelectedCard[0].ReturnCard();
-                _currentSelectedCard[1].ReturnCard();
-                _currentSelectedCard.Clear();
-            }
-            cardSelected.ReturnCard();
-            if(_currentSelectedCard.Count == 1)
-            {
-                _currentSelectedCard.Add(cardSelected);
-                if (_currentSelectedCard[1].GetImageIndex() == _currentSelectedCard[0].GetImageIndex())
-                {
-                    
-                    _currentSelectedCard[0].SetIsMatched(true);
-                    _currentSelectedCard[1].SetIsMatched(true);
-                    _currentSelectedCard.Clear();
-                    return FlipResult.Match;
-                }
-                return FlipResult.NoMatch;
-            }
-            _currentSelectedCard.Add(cardSelected);            
-            return FlipResult.FirstCard;
-        }
-    }
     public class ImageCollection
     {
         private List<Card> _pileOfCard;
 
-        
+
         public ImageCollection()
         {
             _pileOfCard = new List<Card>();
         }
-       public List<Card> GetImageCollection()
+        public List<Card> GetImageCollection()
         {
             return _pileOfCard;
         }
         public void CreatePileOfCard()
         {
-            Card Card1 = new Card(1,"Bombardiro Crocodilo");
+            Card Card1 = new Card(1, "Bombardiro Crocodilo");
             _pileOfCard.Add(Card1);
             Card Card2 = new Card(1, "Bombardiro Crocodilo");
             _pileOfCard.Add(Card2);
@@ -161,8 +108,8 @@ namespace MemoryCard
         public void MixCard()
         {
             Random Rn = new Random();
-            int numberOfCard = _pileOfCard.Count; 
-            while(numberOfCard > 1)
+            int numberOfCard = _pileOfCard.Count;
+            while (numberOfCard > 1)
             {
                 int i = Rn.Next(numberOfCard); // Pour avoir un nbr aléatoire plus petit que le nombre de carte
                 numberOfCard = numberOfCard - 1;
@@ -173,4 +120,74 @@ namespace MemoryCard
         }
 
     }
+    public abstract class game
+    {
+        public int CurrentPlayer = 1;
+        public int NextPlayer(int NbPlayer)
+        {
+            CurrentPlayer = CurrentPlayer + 1;
+            if(CurrentPlayer > NbPlayer)
+            {
+                CurrentPlayer = 1;
+            }
+            return CurrentPlayer;
+        }
+    }
+    public class MemoryGame : game
+    {
+        private ImageCollection _imageCollection = new ImageCollection();
+        private List<Card> _currentSelectedCard;
+        
+
+        public MemoryGame(ImageCollection imageCollection)
+        {
+            _imageCollection = imageCollection;
+            _currentSelectedCard = new List<Card>();
+        }
+        public void SetUpGame()
+        {
+            _imageCollection.CreatePileOfCard();
+            _imageCollection.MixCard();
+        }
+        public enum FlipResult
+        {
+            Match,
+            NoMatch,
+            FirstCard
+        }
+        public FlipResult SelectCard(Card cardSelected)
+        {
+            if (cardSelected.GetIsReturn() && _currentSelectedCard.Count !=2 ) // Si jamais on clique sur une carte déjà retourné ! 
+            {
+                return FlipResult.FirstCard;
+            }
+            if (_currentSelectedCard.Count == 2) // Comme ça on laisse les cartes visibles jusqu'au troisième cliques ! 
+            {
+                _currentSelectedCard[0].ReturnCard();
+                _currentSelectedCard[1].ReturnCard();
+                _currentSelectedCard.Clear();
+            }
+            cardSelected.ReturnCard();
+            if(_currentSelectedCard.Count == 1)
+            {
+                _currentSelectedCard.Add(cardSelected);
+                if (_currentSelectedCard[1].GetImageIndex() == _currentSelectedCard[0].GetImageIndex())
+                {
+
+                    _currentSelectedCard[0].SetIsMatched(true);
+                    _currentSelectedCard[1].SetIsMatched(true);
+                    _currentSelectedCard.Clear();
+                    return FlipResult.Match;
+                }
+                else
+                {
+                    NextPlayer(2);
+                    return FlipResult.NoMatch;
+                }
+            }
+            _currentSelectedCard.Add(cardSelected);            
+            return FlipResult.FirstCard;
+        }
+    }
+    
 }

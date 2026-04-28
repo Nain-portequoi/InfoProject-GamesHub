@@ -1,16 +1,18 @@
-﻿using MemoryCard;
+﻿using MainMenuForm;
+using MemoryCard;
+using NewGameForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using NewGameForm;
-using MainMenuForm;
+
 
 namespace Memory_Pierre
 {
@@ -18,8 +20,7 @@ namespace Memory_Pierre
     {
         private ImageCollection _imageCollection;
         private List<Button> InterfaceButton;
-        private Game _game;
-        int x = 0;
+        private MemoryGame _game;
         private readonly MenuNewGame_Form _menuNewGame;
         private readonly MainMenu_Form _mainMenu;
 
@@ -29,8 +30,9 @@ namespace Memory_Pierre
             _menuNewGame = menuNewGame;
             _mainMenu = mainMenu;
             _imageCollection = new ImageCollection();
-            _game = new Game(_imageCollection);
+            _game = new MemoryGame(_imageCollection);
             _game.SetUpGame();
+            SetUpColorPlayer();
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
             ConnectCardToButton(InterfaceButton, _imageCollection.GetImageCollection());
             PutImageRecto(InterfaceButton);
@@ -76,27 +78,44 @@ namespace Memory_Pierre
             btn.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-
+        
         private void AnyButtonClick(object sender, EventArgs e)
         {
             Button buttonClicked = (Button)sender;
             Card CardClicked = (Card)buttonClicked.Tag;
-            _game.SelectCard(CardClicked);
-            /*
-            if(_game.SelectCard(CardClicked) == Game.FlipResult.Match)
+            switch (_game.SelectCard(CardClicked))
             {
-                // Ajouter des points 
-                // Faire en sorte que si un joueur a gagné, la partie s'arrête ! 
+                case MemoryGame.FlipResult.Match:
+                    if (_game.CurrentPlayer == 1)
+                        pbPlayer1.Value += 1;
+                    else
+                        pbPlayer2.Value += 1;
+                    break;
+                case MemoryGame.FlipResult.NoMatch:
+                    ColorNextPlayer();
+                    break;
             }
-            if (_game.SelectCard(CardClicked) == Game.FlipResult.NoMatch)
-            {
-                // Joueur suivant
-            }
-            */
             ShowAndHideCard(InterfaceButton);
         }
-
-
+        public void SetUpColorPlayer()
+        {
+            lblPlayer1.ForeColor = Color.Green;
+            lblPlayer2.ForeColor = Color.Red;
+        }
+        private void ColorNextPlayer()
+        {
+           
+            if(_game.CurrentPlayer == 1)
+            {
+                lblPlayer1.ForeColor = Color.Green;
+                lblPlayer2.ForeColor = Color.Red;
+            }
+            else if (_game.CurrentPlayer == 2)
+            {
+                lblPlayer1.ForeColor = Color.Red;
+                lblPlayer2.ForeColor= Color.Green;
+            }
+        }
         private void ShowAndHideCard(List<Button> AllButton)
         {
             foreach(Button button in AllButton)
