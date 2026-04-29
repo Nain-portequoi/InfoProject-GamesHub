@@ -90,6 +90,16 @@ namespace NewGameForm
             return _selectedPlayer2;
         }
 
+        public int GetPlayer1ID()
+        {
+            return _dataBase.GetPlayerID(_selectedPlayer1, _mainMenu.fileName);
+        }
+
+        public int GetPlayer2ID()
+        {
+            return _dataBase.GetPlayerID(_selectedPlayer2, _mainMenu.fileName);
+        }
+
         #region GameSelection
         private void BtnPictionary_Click(object sender, EventArgs e)
         {

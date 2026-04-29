@@ -58,6 +58,28 @@ namespace DataBase
             return null;
         }
 
+        public int GetPlayerID(string pseudo, string fileName)
+        {
+            int playerID;
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
+
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT PlayerId FROM Players WHERE Pseudo = @pseudo";
+                command.Parameters.AddWithValue("@pseudo", pseudo);                         // Ajoute un paramètre à la requête SQL pour éviter les injections SQL. Le paramètre @pseudo est remplacé par la valeur de playerId lors de l'exécution de la requête.
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return playerID = reader.GetInt32(0);
+                    }
+                }
+            }
+            return -1;
+        }
+
         public int GetNumberOfPlayers(string fileName)
         {
             int numberOfPlayers = 0;
