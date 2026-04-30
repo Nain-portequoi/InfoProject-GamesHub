@@ -18,7 +18,7 @@ namespace NewGameForm
     {
         #region DataMembers
         private MainMenu_Form _mainMenu;
-        private DataBaseConfig _dataBase;
+        private DataBaseConfig _dataBase = new DataBaseConfig();
 
         public MainMenu_Form GetMainMenu() 
         {
@@ -42,13 +42,12 @@ namespace NewGameForm
             _mainMenu = mainMenu;
             CcbPlayer1.DropDownStyle = ComboBoxStyle.DropDownList;
             CcbPlayer2.DropDownStyle = ComboBoxStyle.DropDownList;
-
             MenuNewGame_Form_Load();
         }
 
         private void MenuNewGame_Form_Load()
         {
-            _dataBase = new DataBaseConfig();
+            
             int numberOfPlayers = _dataBase.GetNumberOfPlayers(_mainMenu.fileName);
 
             for (int i = 0; i < numberOfPlayers; i++)
@@ -103,11 +102,13 @@ namespace NewGameForm
         #region GameSelection
         private void BtnPictionary_Click(object sender, EventArgs e)
         {
+            _dataBase.InsertGame("Memory", "GamesHub.db");
             ShowMemory();
         }
 
         private void BtnBlackJack_Click(object sender, EventArgs e)
         {
+            _dataBase.InsertGame("BlackJack", "GamesHub.db");
             // ShowBlackJack();         lorsque la classe BlackJack_Form sera créée
         }
 

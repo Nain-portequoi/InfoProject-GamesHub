@@ -49,10 +49,9 @@
             this.BtnBack.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBack.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.BtnBack.Location = new System.Drawing.Point(50, 100);
-            this.BtnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnBack.Location = new System.Drawing.Point(36, 67);
             this.BtnBack.Name = "BtnBack";
-            this.BtnBack.Size = new System.Drawing.Size(292, 127);
+            this.BtnBack.Size = new System.Drawing.Size(212, 85);
             this.BtnBack.TabIndex = 4;
             this.BtnBack.Text = "Back";
             this.BtnBack.UseVisualStyleBackColor = false;
@@ -65,9 +64,11 @@
             this.GpbStats.Controls.Add(this.RdbShowGames);
             this.GpbStats.Controls.Add(this.RdbShowPlayers);
             this.GpbStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GpbStats.Location = new System.Drawing.Point(1306, 777);
+            this.GpbStats.Location = new System.Drawing.Point(950, 518);
+            this.GpbStats.Margin = new System.Windows.Forms.Padding(2);
             this.GpbStats.Name = "GpbStats";
-            this.GpbStats.Size = new System.Drawing.Size(575, 268);
+            this.GpbStats.Padding = new System.Windows.Forms.Padding(2);
+            this.GpbStats.Size = new System.Drawing.Size(418, 179);
             this.GpbStats.TabIndex = 5;
             this.GpbStats.TabStop = false;
             this.GpbStats.Text = "Chose a stat to show";
@@ -75,11 +76,11 @@
             // RdbShowRounds
             // 
             this.RdbShowRounds.AutoSize = true;
-            this.RdbShowRounds.Enabled = false;
             this.RdbShowRounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RdbShowRounds.Location = new System.Drawing.Point(19, 177);
+            this.RdbShowRounds.Location = new System.Drawing.Point(14, 118);
+            this.RdbShowRounds.Margin = new System.Windows.Forms.Padding(2);
             this.RdbShowRounds.Name = "RdbShowRounds";
-            this.RdbShowRounds.Size = new System.Drawing.Size(179, 46);
+            this.RdbShowRounds.Size = new System.Drawing.Size(135, 35);
             this.RdbShowRounds.TabIndex = 2;
             this.RdbShowRounds.TabStop = true;
             this.RdbShowRounds.Text = "Rounds";
@@ -90,9 +91,10 @@
             // 
             this.RdbShowGames.AutoSize = true;
             this.RdbShowGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RdbShowGames.Location = new System.Drawing.Point(19, 125);
+            this.RdbShowGames.Location = new System.Drawing.Point(14, 83);
+            this.RdbShowGames.Margin = new System.Windows.Forms.Padding(2);
             this.RdbShowGames.Name = "RdbShowGames";
-            this.RdbShowGames.Size = new System.Drawing.Size(168, 46);
+            this.RdbShowGames.Size = new System.Drawing.Size(127, 35);
             this.RdbShowGames.TabIndex = 1;
             this.RdbShowGames.TabStop = true;
             this.RdbShowGames.Text = "Games";
@@ -103,9 +105,10 @@
             // 
             this.RdbShowPlayers.AutoSize = true;
             this.RdbShowPlayers.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RdbShowPlayers.Location = new System.Drawing.Point(19, 73);
+            this.RdbShowPlayers.Location = new System.Drawing.Point(14, 49);
+            this.RdbShowPlayers.Margin = new System.Windows.Forms.Padding(2);
             this.RdbShowPlayers.Name = "RdbShowPlayers";
-            this.RdbShowPlayers.Size = new System.Drawing.Size(175, 46);
+            this.RdbShowPlayers.Size = new System.Drawing.Size(133, 35);
             this.RdbShowPlayers.TabIndex = 0;
             this.RdbShowPlayers.TabStop = true;
             this.RdbShowPlayers.Text = "Players";
@@ -116,9 +119,10 @@
             // 
             this.RichTxtStats.BackColor = System.Drawing.Color.Bisque;
             this.RichTxtStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RichTxtStats.Location = new System.Drawing.Point(684, 869);
+            this.RichTxtStats.Location = new System.Drawing.Point(497, 579);
+            this.RichTxtStats.Margin = new System.Windows.Forms.Padding(2);
             this.RichTxtStats.Name = "RichTxtStats";
-            this.RichTxtStats.Size = new System.Drawing.Size(1728, 479);
+            this.RichTxtStats.Size = new System.Drawing.Size(1258, 321);
             this.RichTxtStats.TabIndex = 6;
             this.RichTxtStats.Text = "";
             this.RichTxtStats.Visible = false;
@@ -126,10 +130,11 @@
             // txtSearchBox
             // 
             this.txtSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.85714F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBox.Location = new System.Drawing.Point(1925, 631);
+            this.txtSearchBox.Location = new System.Drawing.Point(1400, 421);
+            this.txtSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearchBox.Multiline = true;
             this.txtSearchBox.Name = "txtSearchBox";
-            this.txtSearchBox.Size = new System.Drawing.Size(487, 164);
+            this.txtSearchBox.Size = new System.Drawing.Size(355, 111);
             this.txtSearchBox.TabIndex = 7;
             this.txtSearchBox.Visible = false;
             this.txtSearchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchBox_KeyPress);
@@ -139,9 +144,10 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.BackColor = System.Drawing.Color.Transparent;
             this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(1917, 580);
+            this.lblSearch.Location = new System.Drawing.Point(1394, 387);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(152, 48);
+            this.lblSearch.Size = new System.Drawing.Size(109, 36);
             this.lblSearch.TabIndex = 8;
             this.lblSearch.Text = "Search";
             this.lblSearch.Visible = false;
@@ -156,16 +162,17 @@
             // 
             this.pctSearch.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Icone_de_Recherche___Projet_Info___GamesHub;
             this.pctSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pctSearch.Location = new System.Drawing.Point(2075, 569);
+            this.pctSearch.Location = new System.Drawing.Point(1509, 379);
+            this.pctSearch.Margin = new System.Windows.Forms.Padding(2);
             this.pctSearch.Name = "pctSearch";
-            this.pctSearch.Size = new System.Drawing.Size(56, 59);
+            this.pctSearch.Size = new System.Drawing.Size(41, 39);
             this.pctSearch.TabIndex = 9;
             this.pctSearch.TabStop = false;
             this.pctSearch.Visible = false;
             // 
             // MenuStats_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Stats_Menu___Image_GamesHub___Projet_d_info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -175,9 +182,9 @@
             this.Controls.Add(this.GpbStats);
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.RichTxtStats);
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuStats_Form";
-            this.Size = new System.Drawing.Size(2140, 1360);
+            this.Size = new System.Drawing.Size(1556, 907);
             this.GpbStats.ResumeLayout(false);
             this.GpbStats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctSearch)).EndInit();

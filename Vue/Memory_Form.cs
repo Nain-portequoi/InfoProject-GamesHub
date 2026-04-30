@@ -28,6 +28,7 @@ namespace Memory_Pierre
         private DataBaseConfig _database;
         private Player _player1;
         private Player _player2;
+        
 
         public Memory_Form(MenuNewGame_Form menuNewGame, MainMenu_Form mainMenu)
         {
@@ -37,6 +38,7 @@ namespace Memory_Pierre
             SetPlayer();
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
             CreateNewGame();
+            MessageBox.Show($"ID joueur 1 : {_player1.PlayerID} et ID joueur 2 : {_player2.PlayerID} et leur pseudo sont : {_player1.Pseudo} et {_player2.Pseudo}");
         }
         private void ConnectCardToButton(List<Button> Button, List<Card> Card)
         {
@@ -85,32 +87,51 @@ namespace Memory_Pierre
             switch (_game.SelectCard(CardClicked))
             {
                 case MemoryGame.FlipResult.Match:
-                    if (_game.CurrentPlayer == 1)
-                        pbPlayer1.Value += 1;
-                    else
-                        pbPlayer2.Value += 1;
+                    AddScore();
+                    ShowScoreRound();
                     break;
                 case MemoryGame.FlipResult.NoMatch:
                     ShowPlayerTurn();
                     break;
                 case MemoryGame.FlipResult.GameFinish:
+                    AddScore();
+                    ShowScoreRound();
                     ShowAndHideCard(InterfaceButton); // Pour quand même montrer les deux dernières cartes 
                     GameFinish();
                     break;
             }
             ShowAndHideCard(InterfaceButton);
         }
+        private void AddScore() // J'ai ajouté ça /////////
+        {
+            if (_game.CurrentPlayer == 1)
+            {
+                _player1.ScoreRound += 1;
+            }
+            else
+            {
+                _player2.ScoreRound += 1;
+            }
+        }
+        private void ShowScoreRound() // J'ai ajouté ça /////////
+        {
+            pbPlayer1.Value = _player1.ScoreRound;
+            pbPlayer2.Value = _player2.ScoreRound;
+        }
         private void GameFinish()
         {
+            int gameID = _database.GetGameID("Memory", _mainMenu.fileName);
             if (pbPlayer1.Value > pbPlayer2.Value)
             {
+                _database.InsertRound(_player1.PlayerID, gameID, "GamesHub.db");
                 ShowGameFinishMessage(_player1);
             }
             else
             {
+                _database.InsertRound(_player2.PlayerID, gameID, "GamesHub.db");
                 ShowGameFinishMessage(_player2);
             }
-            DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); // J'ai modifié ça pour voir le score ///////
             if(dialogResult == DialogResult.No)
             {
                 _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
@@ -121,10 +142,9 @@ namespace Memory_Pierre
             }
 
         }
-
         private void ShowGameFinishMessage(Player player)
         {
-            MessageBox.Show($"The game is finish, {player.Pseudo} won the game !");
+            MessageBox.Show($"The game is finish \nScore final :{_player1.Pseudo} {_player1.ScoreRound} - {_player2.ScoreRound} {_player2.Pseudo}  \n{player.Pseudo} won the game !");
         }
         private void ShowAndHideCard(List<Button> AllButton)
         {
@@ -177,10 +197,12 @@ namespace Memory_Pierre
         private void SetPlayer()
         {
             _database = new DataBaseConfig();
-            _player1 = _database.GetPlayersPseudo(_menuNewGame.GetPlayer1ID(), _mainMenu.fileName);
-            _player2 = _database.GetPlayersPseudo(_menuNewGame.GetPlayer2ID(), _mainMenu.fileName);
+            _player1 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer1ID(), _mainMenu.fileName);
+            _player2 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer2ID(), _mainMenu.fileName);
+            
         }
 
+      
         private void BtnBack_Click(object sender, EventArgs e)
         {
             _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);

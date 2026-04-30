@@ -1,11 +1,12 @@
-﻿using System.Data.SQLite;
+﻿using PlayerInformation;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using PlayerInformation;
 using System.Windows.Forms;
 
 namespace DataBase
@@ -36,7 +37,7 @@ namespace DataBase
             }
             return playersPseudo;
         }
-        public Player GetPlayersPseudo(int playerId, string fileName)
+        public Player GetPlayersPseudo(int playerId, string fileName) ////// JSP si tu l'utilisais mais en fait elle récupere que le pseudo moi j'ai besoin de recuper l'id donc j'ai fait un GetPlayerAllInformations
         {
             Player player;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
@@ -56,6 +57,35 @@ namespace DataBase
                 }
             }
             return null;
+        }
+        public Player GetPlayersAllInformations(int playerId, string fileName) 
+        {
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
+
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT PlayerId, Pseudo, FirstName, LastName FROM Players WHERE PlayerId = @playerId";
+                command.Parameters.AddWithValue("@playerId", playerId);                         // Ajoute un paramètre à la requête SQL pour éviter les injections SQL. Le paramètre @playerId est remplacé par la valeur de playerId lors de l'exécution de la requête.
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        // On récupère chaque colonne avec le bon type
+                        int id = reader.GetInt32(0);       // Index 0 : PlayerId (int)
+                        string pseudo = reader.GetString(1); // Index 1 : Pseudo (string)
+
+                        // On récupère le prénom et nom (en gérant les valeurs potentiellement vides/nulles)
+                        string prenom = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                        string nom = reader.IsDBNull(3) ? "" : reader.GetString(3);
+
+                        // On crée l'objet complet
+                        return new Player(pseudo, prenom, nom, id);
+                    }
+                }
+                return null;
+            }
         }
 
         public int GetPlayerID(string pseudo, string fileName)
@@ -99,6 +129,26 @@ namespace DataBase
             }
 
             return numberOfPlayers;
+        }
+        public int GetGameID(string gameName, string fileName)
+        {
+            int gameID;
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT GameID FROM Games WHERE GameName = @gameName";
+                command.Parameters.AddWithValue("@gameName",gameName);                         // Ajoute un paramètre à la requête SQL pour éviter les injections SQL. Le paramètre @playerId est remplacé par la valeur de playerId lors de l'exécution de la requête.
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return gameID = reader.GetInt32(0);
+                    }
+                }
+            }
+            return -1;
         }
 
         #region DataRetrieval
@@ -172,8 +222,8 @@ namespace DataBase
         }
         public bool CreateRoundTable(string fileName)
         {
-            string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER REFERENCES Players(PlayerId)";
-            return CreateTable("Round", columns, fileName);
+            string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, WinnerPlayerId INTEGER REFERENCES Players(PlayerId),GameID INTEGER REFERENCES Games(GameID)"; // J'ai modifié cette ligne là car il y avait un problème avec le foreign KEY avant c'etait ça : "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER ..."
+            return CreateTable("Rounds", columns, fileName);
         }
         #endregion
 
@@ -198,6 +248,47 @@ namespace DataBase
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error inserting player: {ex.Message}");
+                    throw ex;
+                }
+            }
+        }
+        public void InsertGame(string gameName, string fileName)
+        {
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "INSERT OR IGNORE INTO Games (GameName) VALUES (@gameName)"; // J'ai mis un "OR IGNORE" Car si le jeu est déjà dans la base de donnée je pouvais plus jouer au jeux car il essaye de creeer un nouveau jeu qui est sencé etre etre unique mais il existe deja donc ca plante
+                command.Parameters.AddWithValue("@gameName", gameName);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error inserting game: {ex.Message}");
+                    throw ex;
+                }
+            }
+        }
+        public void InsertRound(int winnerPlayerID, int gameID, string fileName)
+        {
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO Rounds (winnerPlayerID , gameID) VALUES (@winnerPlayerId,@gameID)";
+                command.Parameters.AddWithValue("@winnerPlayerId", winnerPlayerID);
+                command.Parameters.AddWithValue("@gameID", gameID);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error inserting game: {ex.Message}");
                     throw ex;
                 }
             }

@@ -42,7 +42,7 @@ namespace MenuStatsForm
             SetStatsLocation(_nextLocation);       // Change the location of the stats group box when a radio button is checked
             SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
-            RichTxtStats.Text = "Player ID \tPseudo \tFirst Name Last Name \tTotal Score \tResults \n";
+            RichTxtStats.Text = "Player ID \tPseudo \tFirst Name\t Last Name \tTotal Score \tResults \n";
             WriteRichTxtStats("SELECT * FROM Players");
         }
 
@@ -53,6 +53,7 @@ namespace MenuStatsForm
             SetStatsLocation(_nextLocation);
             SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
+            RichTxtStats.Text = "Game ID\t Game name\t\n";
             WriteRichTxtStats("SELECT * FROM Games");
         }
 
@@ -61,6 +62,7 @@ namespace MenuStatsForm
             SetStatsLocation(_nextLocation);
             SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
+            RichTxtStats.Text = "Round ID\t Winner Player ID\t Game ID\t\n";
             WriteRichTxtStats("SELECT * FROM Rounds");
         }
 

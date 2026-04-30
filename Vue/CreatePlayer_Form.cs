@@ -46,9 +46,6 @@ namespace MenuCreatePlayer
                 }
             }
         }
-        
-
-
         private bool WantToSave(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Do you want to save the information?", "Save Information", MessageBoxButtons.YesNo);

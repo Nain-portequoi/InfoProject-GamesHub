@@ -25,6 +25,7 @@ namespace MainMenuForm
             //_dataBase.DeleteAllPlayers(fileName);
             _dataBase.CreateGameTable(fileName);
             _dataBase.CreatePlayersTable(fileName);
+            _dataBase.CreateRoundTable(fileName);
         }
 
         #region ShowMenuMethods

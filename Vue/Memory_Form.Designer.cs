@@ -263,6 +263,7 @@
             this.BtnBack.TabIndex = 22;
             this.BtnBack.Text = "Back";
             this.BtnBack.UseVisualStyleBackColor = false;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // Memory_Form
             // 
