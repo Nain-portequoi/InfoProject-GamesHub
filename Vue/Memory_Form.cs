@@ -120,15 +120,15 @@ namespace Memory_Pierre
         }
         private void GameFinish()
         {
-            int gameID = _database.GetGameID("Memory", _mainMenu.fileName);
+            int gameID = _database.GetGameID("Memory");
             if (pbPlayer1.Value > pbPlayer2.Value)
             {
-                _database.InsertRound(_player1.PlayerID, gameID, "GamesHub.db");
+                _database.InsertRound(_player1.PlayerID, gameID);
                 ShowGameFinishMessage(_player1);
             }
             else
             {
-                _database.InsertRound(_player2.PlayerID, gameID, "GamesHub.db");
+                _database.InsertRound(_player2.PlayerID, gameID);
                 ShowGameFinishMessage(_player2);
             }
             DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); // J'ai modifié ça pour voir le score ///////
@@ -197,8 +197,8 @@ namespace Memory_Pierre
         private void SetPlayer()
         {
             _database = new DataBaseConfig();
-            _player1 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer1ID(), _mainMenu.fileName);
-            _player2 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer2ID(), _mainMenu.fileName);
+            _player1 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer1ID());
+            _player2 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer2ID());
             
         }
 

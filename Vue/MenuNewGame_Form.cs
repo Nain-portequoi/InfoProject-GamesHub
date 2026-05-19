@@ -48,11 +48,11 @@ namespace NewGameForm
         private void MenuNewGame_Form_Load()
         {
             
-            int numberOfPlayers = _dataBase.GetNumberOfPlayers(_mainMenu.fileName);
+            int numberOfPlayers = _dataBase.GetNumberOfPlayers();
 
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Player player = _dataBase.GetPlayersPseudo(i + 1, _mainMenu.fileName);
+                Player player = _dataBase.GetPlayersPseudo(i + 1);
                 CcbPlayer1.Items.Add(player.Pseudo);
                 CcbPlayer2.Items.Add(player.Pseudo);
             }
@@ -91,24 +91,24 @@ namespace NewGameForm
 
         public int GetPlayer1ID()
         {
-            return _dataBase.GetPlayerID(_selectedPlayer1, _mainMenu.fileName);
+            return _dataBase.GetPlayerID(_selectedPlayer1);
         }
 
         public int GetPlayer2ID()
         {
-            return _dataBase.GetPlayerID(_selectedPlayer2, _mainMenu.fileName);
+            return _dataBase.GetPlayerID(_selectedPlayer2);
         }
 
         #region GameSelection
         private void BtnPictionary_Click(object sender, EventArgs e)
         {
-            _dataBase.InsertGame("Memory", "GamesHub.db");
+            _dataBase.InsertGame("Memory");
             ShowMemory();
         }
 
         private void BtnBlackJack_Click(object sender, EventArgs e)
         {
-            _dataBase.InsertGame("BlackJack", "GamesHub.db");
+            _dataBase.InsertGame("BlackJack");
             // ShowBlackJack();         lorsque la classe BlackJack_Form sera créée
         }
 

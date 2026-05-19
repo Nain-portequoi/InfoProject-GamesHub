@@ -17,15 +17,15 @@ namespace MainMenuForm
     public partial class MainMenu_Form : Form
     {
         private readonly DataBaseConfig _dataBase = new DataBaseConfig();
-        public readonly string fileName = "GamesHub.db";
+
         public MainMenu_Form()
         {
             InitializeComponent();
             
-            //_dataBase.DeleteAllPlayers(fileName);
-            _dataBase.CreateGameTable(fileName);
-            _dataBase.CreatePlayersTable(fileName);
-            _dataBase.CreateRoundTable(fileName);
+            //_dataBase.DeleteAllPlayers();
+            _dataBase.CreateGameTable();
+            _dataBase.CreatePlayersTable();
+            _dataBase.CreateRoundTable();
         }
 
         #region ShowMenuMethods

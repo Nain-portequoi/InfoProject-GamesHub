@@ -13,11 +13,16 @@ namespace DataBase
 {
     public class DataBaseConfig
     {
-        public List<Player> ListPlayersPseudo(string fileName)
+        private readonly string _dbFileName = "GamesHub.db";
+
+        public string DatabaseFileName { get { return _dbFileName; } }
+
+        public List<Player> ListPlayersPseudo()
         {
+            string fileName = DatabaseFileName;
             List<Player> playersPseudo = new List<Player>();
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
-            bool ok = CreatePlayersTable(fileName);
+            bool ok = CreatePlayersTable();
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))             // Crée une connexion à la base de données SQLite
             {
                 connection.Open();                                                              // Ouvre la connexion à la base de données (même principe qu'en C où l'on ouvrait le fichier avec fopen)
@@ -37,9 +42,10 @@ namespace DataBase
             }
             return playersPseudo;
         }
-        public Player GetPlayersPseudo(int playerId, string fileName) ////// JSP si tu l'utilisais mais en fait elle récupere que le pseudo moi j'ai besoin de recuper l'id donc j'ai fait un GetPlayerAllInformations
+        public Player GetPlayersPseudo(int playerId) ////// JSP si tu l'utilisais mais en fait elle récupere que le pseudo moi j'ai besoin de recuper l'id donc j'ai fait un GetPlayerAllInformations
         {
             Player player;
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
 
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
@@ -58,8 +64,9 @@ namespace DataBase
             }
             return null;
         }
-        public Player GetPlayersAllInformations(int playerId, string fileName) 
+        public Player GetPlayersAllInformations(int playerId) 
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
 
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
@@ -88,9 +95,10 @@ namespace DataBase
             }
         }
 
-        public int GetPlayerID(string pseudo, string fileName)
+        public int GetPlayerID(string pseudo)
         {
             int playerID;
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
 
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
@@ -110,8 +118,9 @@ namespace DataBase
             return -1;
         }
 
-        public int GetNumberOfPlayers(string fileName)
+        public int GetNumberOfPlayers()
         {
+            string fileName = DatabaseFileName;
             int numberOfPlayers = 0;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
@@ -130,9 +139,10 @@ namespace DataBase
 
             return numberOfPlayers;
         }
-        public int GetGameID(string gameName, string fileName)
+        public int GetGameID(string gameName)
         {
             int gameID;
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
@@ -152,9 +162,10 @@ namespace DataBase
         }
 
         #region DataRetrieval
-        public List<string> GetAllInfos(string fileName, string commandText)
+        public List<string> GetAllInfos(string commandText)
         {
             List<string> infos = new List<string>();
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Chemin vers la base de données
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
@@ -190,8 +201,9 @@ namespace DataBase
 
 
         #region TableCreation
-        private bool CreateTable(string tableName, string columns, string fileName)
+        private bool CreateTable(string tableName, string columns)
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName); // Même commentaire que pour la méthode GetPlayersPseudo()
             using (var connection = new SQLiteConnection($"Data Source={dbPath}"))
             {
@@ -210,26 +222,30 @@ namespace DataBase
                 }
             }
         }
-        public bool CreatePlayersTable(string fileName)
+        public bool CreatePlayersTable()
         {
+            string fileName = DatabaseFileName;
             string columns = "PlayerId INTEGER PRIMARY KEY AUTOINCREMENT, Pseudo TEXT NOT NULL, FirstName TEXT, LastName TEXT, ScoreTot INTEGER, Results TEXT, UNIQUE(Pseudo)";
-            return CreateTable("Players", columns, fileName);
+            return CreateTable("Players", columns);
         }
-        public bool CreateGameTable(string fileName)
+        public bool CreateGameTable()
         {
+            string fileName = DatabaseFileName;
             string columns = "GameID INTEGER PRIMARY KEY AUTOINCREMENT, GameName TEXT NOT NULL, UNIQUE(GameName)";
-            return CreateTable("Games", columns, fileName);
+            return CreateTable("Games", columns);
         }
-        public bool CreateRoundTable(string fileName)
+        public bool CreateRoundTable()
         {
+            string fileName = DatabaseFileName;
             string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, WinnerPlayerId INTEGER REFERENCES Players(PlayerId),GameID INTEGER REFERENCES Games(GameID)"; // J'ai modifié cette ligne là car il y avait un problème avec le foreign KEY avant c'etait ça : "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER ..."
-            return CreateTable("Rounds", columns, fileName);
+            return CreateTable("Rounds", columns);
         }
         #endregion
 
         #region DataInsertion
-        public void InsertPlayer(string pseudo, string firstName, string lastName, int scoreTot, string results, string fileName)
+        public void InsertPlayer(string pseudo, string firstName, string lastName, int scoreTot, string results)
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
@@ -252,8 +268,9 @@ namespace DataBase
                 }
             }
         }
-        public void InsertGame(string gameName, string fileName)
+        public void InsertGame(string gameName)
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
@@ -272,8 +289,9 @@ namespace DataBase
                 }
             }
         }
-        public void InsertRound(int winnerPlayerID, int gameID, string fileName)
+        public void InsertRound(int winnerPlayerID, int gameID)
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
@@ -296,8 +314,9 @@ namespace DataBase
         #endregion
 
         #region DataDeletion
-        public bool DeletePlayer(int playerId, string fileName)
+        public bool DeletePlayer(int playerId)
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
@@ -318,8 +337,9 @@ namespace DataBase
             }
         }
 
-        public bool DeleteAllPlayers(string fileName)
+        public bool DeleteAllPlayers()
         {
+            string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
             {
