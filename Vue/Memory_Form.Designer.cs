@@ -55,8 +55,8 @@
             // 
             // BtnCard1
             // 
-            this.BtnCard1.Location = new System.Drawing.Point(780, 841);
-            this.BtnCard1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard1.Location = new System.Drawing.Point(833, 876);
+            this.BtnCard1.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard1.Name = "BtnCard1";
             this.BtnCard1.Size = new System.Drawing.Size(154, 152);
             this.BtnCard1.TabIndex = 0;
@@ -65,8 +65,8 @@
             // 
             // BtnCard2
             // 
-            this.BtnCard2.Location = new System.Drawing.Point(1045, 841);
-            this.BtnCard2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard2.Location = new System.Drawing.Point(1054, 876);
+            this.BtnCard2.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard2.Name = "BtnCard2";
             this.BtnCard2.Size = new System.Drawing.Size(154, 152);
             this.BtnCard2.TabIndex = 1;
@@ -75,8 +75,8 @@
             // 
             // BtnCard3
             // 
-            this.BtnCard3.Location = new System.Drawing.Point(1341, 841);
-            this.BtnCard3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard3.Location = new System.Drawing.Point(1300, 876);
+            this.BtnCard3.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard3.Name = "BtnCard3";
             this.BtnCard3.Size = new System.Drawing.Size(154, 152);
             this.BtnCard3.TabIndex = 2;
@@ -85,8 +85,8 @@
             // 
             // BtnCard4
             // 
-            this.BtnCard4.Location = new System.Drawing.Point(1634, 841);
-            this.BtnCard4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard4.Location = new System.Drawing.Point(1564, 876);
+            this.BtnCard4.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard4.Name = "BtnCard4";
             this.BtnCard4.Size = new System.Drawing.Size(154, 152);
             this.BtnCard4.TabIndex = 3;
@@ -95,8 +95,8 @@
             // 
             // BtnCard5
             // 
-            this.BtnCard5.Location = new System.Drawing.Point(1899, 841);
-            this.BtnCard5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard5.Location = new System.Drawing.Point(1811, 876);
+            this.BtnCard5.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard5.Name = "BtnCard5";
             this.BtnCard5.Size = new System.Drawing.Size(154, 152);
             this.BtnCard5.TabIndex = 4;
@@ -105,8 +105,8 @@
             // 
             // BtnCard6
             // 
-            this.BtnCard6.Location = new System.Drawing.Point(2163, 841);
-            this.BtnCard6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard6.Location = new System.Drawing.Point(2088, 876);
+            this.BtnCard6.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard6.Name = "BtnCard6";
             this.BtnCard6.Size = new System.Drawing.Size(154, 152);
             this.BtnCard6.TabIndex = 5;
@@ -115,8 +115,8 @@
             // 
             // BtnCard7
             // 
-            this.BtnCard7.Location = new System.Drawing.Point(724, 1029);
-            this.BtnCard7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard7.Location = new System.Drawing.Point(833, 1064);
+            this.BtnCard7.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard7.Name = "BtnCard7";
             this.BtnCard7.Size = new System.Drawing.Size(154, 152);
             this.BtnCard7.TabIndex = 6;
@@ -125,8 +125,8 @@
             // 
             // BtnCard8
             // 
-            this.BtnCard8.Location = new System.Drawing.Point(1020, 1029);
-            this.BtnCard8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard8.Location = new System.Drawing.Point(1054, 1064);
+            this.BtnCard8.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard8.Name = "BtnCard8";
             this.BtnCard8.Size = new System.Drawing.Size(154, 152);
             this.BtnCard8.TabIndex = 7;
@@ -135,8 +135,8 @@
             // 
             // BtnCard9
             // 
-            this.BtnCard9.Location = new System.Drawing.Point(1322, 1029);
-            this.BtnCard9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard9.Location = new System.Drawing.Point(1300, 1064);
+            this.BtnCard9.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard9.Name = "BtnCard9";
             this.BtnCard9.Size = new System.Drawing.Size(154, 152);
             this.BtnCard9.TabIndex = 8;
@@ -145,8 +145,8 @@
             // 
             // BtnCard10
             // 
-            this.BtnCard10.Location = new System.Drawing.Point(1635, 1029);
-            this.BtnCard10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard10.Location = new System.Drawing.Point(1564, 1064);
+            this.BtnCard10.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard10.Name = "BtnCard10";
             this.BtnCard10.Size = new System.Drawing.Size(154, 152);
             this.BtnCard10.TabIndex = 9;
@@ -155,8 +155,8 @@
             // 
             // BtnCard11
             // 
-            this.BtnCard11.Location = new System.Drawing.Point(1909, 1029);
-            this.BtnCard11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard11.Location = new System.Drawing.Point(1811, 1064);
+            this.BtnCard11.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard11.Name = "BtnCard11";
             this.BtnCard11.Size = new System.Drawing.Size(154, 152);
             this.BtnCard11.TabIndex = 10;
@@ -165,8 +165,8 @@
             // 
             // BtnCard12
             // 
-            this.BtnCard12.Location = new System.Drawing.Point(2200, 1029);
-            this.BtnCard12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard12.Location = new System.Drawing.Point(2088, 1064);
+            this.BtnCard12.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard12.Name = "BtnCard12";
             this.BtnCard12.Size = new System.Drawing.Size(154, 152);
             this.BtnCard12.TabIndex = 11;
@@ -175,8 +175,8 @@
             // 
             // BtnCard13
             // 
-            this.BtnCard13.Location = new System.Drawing.Point(690, 1264);
-            this.BtnCard13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard13.Location = new System.Drawing.Point(833, 1269);
+            this.BtnCard13.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard13.Name = "BtnCard13";
             this.BtnCard13.Size = new System.Drawing.Size(154, 152);
             this.BtnCard13.TabIndex = 12;
@@ -185,8 +185,8 @@
             // 
             // BtnCard14
             // 
-            this.BtnCard14.Location = new System.Drawing.Point(1001, 1261);
-            this.BtnCard14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard14.Location = new System.Drawing.Point(1054, 1269);
+            this.BtnCard14.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard14.Name = "BtnCard14";
             this.BtnCard14.Size = new System.Drawing.Size(154, 152);
             this.BtnCard14.TabIndex = 13;
@@ -195,8 +195,8 @@
             // 
             // BtnCard15
             // 
-            this.BtnCard15.Location = new System.Drawing.Point(1322, 1255);
-            this.BtnCard15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard15.Location = new System.Drawing.Point(1300, 1269);
+            this.BtnCard15.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard15.Name = "BtnCard15";
             this.BtnCard15.Size = new System.Drawing.Size(154, 152);
             this.BtnCard15.TabIndex = 14;
@@ -205,8 +205,8 @@
             // 
             // BtnCard16
             // 
-            this.BtnCard16.Location = new System.Drawing.Point(1620, 1260);
-            this.BtnCard16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard16.Location = new System.Drawing.Point(1564, 1269);
+            this.BtnCard16.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard16.Name = "BtnCard16";
             this.BtnCard16.Size = new System.Drawing.Size(154, 152);
             this.BtnCard16.TabIndex = 15;
@@ -215,8 +215,8 @@
             // 
             // BtnCard17
             // 
-            this.BtnCard17.Location = new System.Drawing.Point(1954, 1260);
-            this.BtnCard17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard17.Location = new System.Drawing.Point(1811, 1269);
+            this.BtnCard17.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard17.Name = "BtnCard17";
             this.BtnCard17.Size = new System.Drawing.Size(154, 152);
             this.BtnCard17.TabIndex = 16;
@@ -225,8 +225,8 @@
             // 
             // BtnCard18
             // 
-            this.BtnCard18.Location = new System.Drawing.Point(2256, 1260);
-            this.BtnCard18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCard18.Location = new System.Drawing.Point(2088, 1269);
+            this.BtnCard18.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCard18.Name = "BtnCard18";
             this.BtnCard18.Size = new System.Drawing.Size(154, 152);
             this.BtnCard18.TabIndex = 17;
@@ -238,7 +238,7 @@
             this.lblPlayer1.AutoSize = true;
             this.lblPlayer1.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer1.Location = new System.Drawing.Point(885, 1488);
+            this.lblPlayer1.Location = new System.Drawing.Point(984, 1483);
             this.lblPlayer1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPlayer1.Name = "lblPlayer1";
             this.lblPlayer1.Size = new System.Drawing.Size(187, 44);
@@ -250,7 +250,7 @@
             this.lblPlayer2.AutoSize = true;
             this.lblPlayer2.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer2.Location = new System.Drawing.Point(1668, 1488);
+            this.lblPlayer2.Location = new System.Drawing.Point(1767, 1483);
             this.lblPlayer2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPlayer2.Name = "lblPlayer2";
             this.lblPlayer2.Size = new System.Drawing.Size(187, 44);
@@ -259,8 +259,8 @@
             // 
             // pbPlayer1
             // 
-            this.pbPlayer1.Location = new System.Drawing.Point(1136, 1502);
-            this.pbPlayer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbPlayer1.Location = new System.Drawing.Point(1235, 1497);
+            this.pbPlayer1.Margin = new System.Windows.Forms.Padding(4);
             this.pbPlayer1.Maximum = 9;
             this.pbPlayer1.Name = "pbPlayer1";
             this.pbPlayer1.Size = new System.Drawing.Size(138, 34);
@@ -268,8 +268,8 @@
             // 
             // pbPlayer2
             // 
-            this.pbPlayer2.Location = new System.Drawing.Point(1929, 1502);
-            this.pbPlayer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbPlayer2.Location = new System.Drawing.Point(2028, 1497);
+            this.pbPlayer2.Margin = new System.Windows.Forms.Padding(4);
             this.pbPlayer2.Maximum = 9;
             this.pbPlayer2.Name = "pbPlayer2";
             this.pbPlayer2.Size = new System.Drawing.Size(138, 34);
@@ -292,8 +292,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Salmon;
-            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Memory_Background__Image_GamesHub___Projet_d_info;
+            this.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.Memory_new_Background__Image_GamesHub___Projet_d_info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.pbPlayer2);
@@ -318,9 +319,9 @@
             this.Controls.Add(this.BtnCard3);
             this.Controls.Add(this.BtnCard2);
             this.Controls.Add(this.BtnCard1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Memory_Form";
-            this.Size = new System.Drawing.Size(2250, 1360);
+            this.Size = new System.Drawing.Size(2220, 1330);
             this.ResumeLayout(false);
             this.PerformLayout();
 

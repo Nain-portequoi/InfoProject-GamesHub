@@ -28,14 +28,16 @@ namespace Memory_Pierre
         private DataBaseConfig _database;
         private Player _player1;
         private Player _player2;
-        
 
         public Memory_Form(MenuNewGame_Form menuNewGame, MainMenu_Form mainMenu)
         {
             InitializeComponent();
             _menuNewGame = menuNewGame;
             _mainMenu = mainMenu;
+            pbPlayer1.Value = 0;
+            pbPlayer2.Value = 0;
             SetPlayer();
+
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
             CreateNewGame();
         }
@@ -122,12 +124,16 @@ namespace Memory_Pierre
             int gameID = _database.GetGameID("Memory");
             if (pbPlayer1.Value > pbPlayer2.Value)
             {
-                _database.InsertRound(_player1.PlayerID, gameID);
+                _database.InsertRound(_player1.PlayerID, _player2.PlayerID, gameID);
+                _player1.ScoreTot += 1;
+                _database.UpdateScoreTot(_player1.PlayerID, _player1.ScoreTot);
                 ShowGameFinishMessage(_player1);
             }
             else
             {
-                _database.InsertRound(_player2.PlayerID, gameID);
+                _database.InsertRound(_player2.PlayerID, _player1.PlayerID, gameID);
+                _player2.ScoreTot += 1;
+                _database.UpdateScoreTot(_player2.PlayerID, _player2.ScoreTot);
                 ShowGameFinishMessage(_player2);
             }
             DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); 

@@ -39,15 +39,24 @@ namespace MenuStatsForm
         }
         private void RdbShowPlayers_CheckedChanged(object sender, EventArgs e)
         {
-            SetStatsLocation(_nextLocation);       // Change the location of the stats group box when a radio button is checked
+            SetStatsLocation(_nextLocation);
             SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
-            RichTxtStats.Text = "Player ID \tPseudo \tFirst Name\t Last Name \tTotal Score \tResults \n";
-            // WriteRichTxtStats("SELECT * FROM Players");
-            string SQLRequest = @" SELECT p.PlayerId, p.Pseudo, p.FirstName, p.LastName, COUNT(r.RoundID) AS TotalScore FROM Players p 
-            LEFT JOIN Rounds r ON p.PlayerId = r.WinnerPlayerId 
-            GROUP BY p.PlayerId, p.Pseudo, p.FirstName, p.LastName
+            RichTxtStats.Text = "Player ID \tPseudo \tScore \tTotal Games played\n";
+
+            string SQLRequest = @"
+            SELECT 
+            p.PlayerId, 
+            p.Pseudo,
+            p.ScoreTot,
+            COUNT(r.RoundID) AS TotalGames
+            FROM Players p 
+            LEFT JOIN Rounds r 
+            ON p.PlayerId = r.WinnerPlayerId 
+            OR p.PlayerId = r.LooserPlayerId
+            GROUP BY p.PlayerId, p.Pseudo
             ORDER BY p.PlayerId ASC;";
+
             WriteRichTxtStats(SQLRequest);
         }
 
@@ -67,8 +76,19 @@ namespace MenuStatsForm
             SetStatsLocation(_nextLocation);
             SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
-            RichTxtStats.Text = "Round ID\t Winner Player ID\t Game ID\t\n";
-            WriteRichTxtStats("SELECT * FROM Rounds");
+            RichTxtStats.Text = "Round ID\tWinner\tLooser\tGame ID\t\n";
+
+            string query = @"
+            SELECT 
+            r.RoundID, 
+            pw.Pseudo AS Winner, 
+            pl.Pseudo AS Looser, 
+            r.GameID
+            FROM Rounds r
+            INNER JOIN Players pw ON r.WinnerPlayerId = pw.PlayerId
+            INNER JOIN Players pl ON r.LooserPlayerId = pl.PlayerId";
+
+            WriteRichTxtStats(query);
         }
 
         private void SetStatsLocation(Point location)
@@ -88,9 +108,35 @@ namespace MenuStatsForm
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                string command = txtSearchBox.Text;
-                MessageBox.Show("Search command: " + command);
+                e.Handled = true; // évite le "ding" du Enter
+
+                string searchInput = txtSearchBox.Text.Trim();
+
+                // Validation : un seul mot, non vide, caractères alphanumériques uniquement
+                if (string.IsNullOrWhiteSpace(searchInput))
+                {
+                    MessageBox.Show("Please enter a pseudo to search.");
+                    return;
+                }
+
+                if (searchInput.Contains(' '))
+                {
+                    MessageBox.Show("Please enter only one word (a pseudo).");
+                    return;
+                }
+
+                // On autorise uniquement lettres, chiffres et underscore -> évite les caractères dangereux
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchInput, @"^[a-zA-Z0-9_]+$")) // Si l'on ne fait pas ça, on peut faire du SQL injection en tapant "toto' OR '1'='1" et ça nous afficherait tous les joueurs (exemple donné par Mr Evrard au laboratoire)
+                {
+                    MessageBox.Show("The pseudo can only contain letters, digits and underscores.");
+                    return;
+                }
+
                 RichTxtStats.Clear();
+                RichTxtStats.Text = "Player ID \tPseudo \tScore Tot\n";
+
+                string command = $"SELECT playerID, Pseudo, ScoreTot FROM Players WHERE Pseudo = '{searchInput}'";
+
                 try
                 {
                     WriteRichTxtStats(command);
@@ -101,5 +147,6 @@ namespace MenuStatsForm
                 }
             }
         }
+
     }
 }

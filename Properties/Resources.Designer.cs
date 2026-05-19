@@ -153,6 +153,16 @@ namespace InfoProject_GamesHub.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Memory_new_Background__Image_GamesHub___Projet_d_info {
+            get {
+                object obj = ResourceManager.GetObject("Memory new Background- Image GamesHub - Projet d\'info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MemoryImageGameChoice {
             get {
                 object obj = ResourceManager.GetObject("MemoryImageGameChoice", resourceCulture);

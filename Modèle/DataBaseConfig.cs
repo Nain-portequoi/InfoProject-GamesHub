@@ -42,7 +42,7 @@ namespace DataBase
             }
             return playersPseudo;
         }
-        public Player GetPlayersPseudo(int playerId) ////// JSP si tu l'utilisais mais en fait elle récupere que le pseudo moi j'ai besoin de recuper l'id donc j'ai fait un GetPlayerAllInformations
+        public Player GetPlayersPseudo(int playerId) 
         {
             Player player;
             string fileName = DatabaseFileName;
@@ -237,7 +237,7 @@ namespace DataBase
         public bool CreateRoundTable()
         {
             string fileName = DatabaseFileName;
-            string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, WinnerPlayerId INTEGER REFERENCES Players(PlayerId),GameID INTEGER REFERENCES Games(GameID)"; // J'ai modifié cette ligne là car il y avait un problème avec le foreign KEY avant c'etait ça : "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER ..."
+            string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, WinnerPlayerId INTEGER REFERENCES Players(PlayerId), LooserPlayerId INTEGER REFERENCES Players(PlayerId), GameID INTEGER REFERENCES Games(GameID)"; // J'ai modifié cette ligne là car il y avait un problème avec le foreign KEY avant c'etait ça : "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER ..."
             return CreateTable("Rounds", columns);
         }
         #endregion
@@ -289,7 +289,7 @@ namespace DataBase
                 }
             }
         }
-        public void InsertRound(int winnerPlayerID, int gameID)
+        public void InsertRound(int winnerPlayerID, int looserPlayerId,int gameID)
         {
             string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
@@ -297,8 +297,9 @@ namespace DataBase
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO Rounds (winnerPlayerID , gameID) VALUES (@winnerPlayerId,@gameID)";
+                command.CommandText = "INSERT INTO Rounds (winnerPlayerID, looserPlayerID, gameID) VALUES (@winnerPlayerId, @looserPlayerId, @gameID)";
                 command.Parameters.AddWithValue("@winnerPlayerId", winnerPlayerID);
+                command.Parameters.AddWithValue("@looserPlayerId", looserPlayerId);
                 command.Parameters.AddWithValue("@gameID", gameID);
                 try
                 {
@@ -306,9 +307,23 @@ namespace DataBase
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error inserting game: {ex.Message}");
+                    Console.WriteLine($"Error inserting round: {ex.Message}");
                     throw ex;
                 }
+            }
+        }
+
+        public void UpdateScoreTot(int playerId, int newScore)
+        {
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _dbFileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "UPDATE Players SET ScoreTot = @newScore WHERE PlayerId = @playerId";
+                command.Parameters.AddWithValue("@newScore", newScore);
+                command.Parameters.AddWithValue("@playerId", playerId);
+                command.ExecuteNonQuery();
             }
         }
         #endregion
@@ -337,6 +352,51 @@ namespace DataBase
             }
         }
 
+        public bool DeleteGame(int gameId)
+        {
+            string fileName = DatabaseFileName;
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM Games WHERE GameID = @gameId";
+                command.Parameters.AddWithValue("@gameId", gameId);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting game: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        public bool DeleteRound(int roundId)
+        {
+            string fileName = DatabaseFileName;
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM Rounds WHERE RoundID = @roundId";
+                command.Parameters.AddWithValue("@roundId", roundId);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting round: {ex.Message}");
+                    return false;
+                }
+            }
+        }
         public bool DeleteAllPlayers()
         {
             string fileName = DatabaseFileName;
@@ -357,6 +417,55 @@ namespace DataBase
                     return false;
                 }
             }
+        }
+
+        public bool DeleteAllGames()
+        {
+            string fileName = DatabaseFileName;
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS Games";
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting games: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        public bool DeleteAllRounds()
+        {
+            string fileName = DatabaseFileName;
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            using (var connection = new SQLiteConnection($"Data Source={dbPath};"))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS Rounds";
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting player: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+        public bool DeleteAllData()
+        {
+            return DeleteAllPlayers() && DeleteAllGames() && DeleteAllRounds();
         }
 
         #endregion
