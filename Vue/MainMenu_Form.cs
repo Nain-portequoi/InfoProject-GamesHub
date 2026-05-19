@@ -22,7 +22,7 @@ namespace MainMenuForm
         {
             InitializeComponent();
             
-            //_dataBase.DeleteAllData();
+            _dataBase.DeleteAllData();
             _dataBase.CreateGameTable();
             _dataBase.CreatePlayersTable();
             _dataBase.CreateRoundTable();

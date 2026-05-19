@@ -237,7 +237,7 @@ namespace DataBase
         public bool CreateRoundTable()
         {
             string fileName = DatabaseFileName;
-            string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, WinnerPlayerId INTEGER REFERENCES Players(PlayerId), LooserPlayerId INTEGER REFERENCES Players(PlayerId), GameID INTEGER REFERENCES Games(GameID)"; // J'ai modifié cette ligne là car il y avait un problème avec le foreign KEY avant c'etait ça : "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, FOREIGN KEY(GameID) REFERENCES Game(GameID), WinnerPlayerId INTEGER ..."
+            string columns = "RoundID INTEGER PRIMARY KEY AUTOINCREMENT, WinnerPlayerId INTEGER REFERENCES Players(PlayerId), LooserPlayerId INTEGER REFERENCES Players(PlayerId), GameID INTEGER REFERENCES Games(GameID)"; 
             return CreateTable("Rounds", columns);
         }
         #endregion
