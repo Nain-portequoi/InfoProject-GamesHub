@@ -31,7 +31,7 @@ namespace MenuStatsForm
         }
         private void WriteRichTxtStats(string query)
         {
-            List<string> info = _database.GetAllInfos(_mainMenu.fileName, query);
+            List<string> info = _database.GetAllInfos(query);
             foreach (var item in info)
             {
                 RichTxtStats.AppendText(item + Environment.NewLine);

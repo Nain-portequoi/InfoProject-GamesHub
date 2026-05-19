@@ -37,7 +37,7 @@ namespace MenuCreatePlayer
             {
                 try 
                 {
-                    _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "", "GamesHub.db");
+                    _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0, "");
                     _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
                 }
                 catch (Exception ex)
