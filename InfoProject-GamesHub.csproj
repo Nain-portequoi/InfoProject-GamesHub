@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modèle\GameClass.cs" />
     <Compile Include="Modèle\Carte.cs" />
     <Compile Include="Vue\Memory_Form.cs">
       <SubType>UserControl</SubType>

@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using DataBase;
 using PlayerInformation;
+using MemoryGameClass;
 
 
 namespace Memory_Pierre
