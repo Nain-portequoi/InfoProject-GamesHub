@@ -110,12 +110,13 @@
             // 
             // BtnPictionary
             // 
+            this.BtnPictionary.BackgroundImage = global::InfoProject_GamesHub.Properties.Resources.MemoryImageGameChoice;
+            this.BtnPictionary.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnPictionary.Enabled = false;
             this.BtnPictionary.Location = new System.Drawing.Point(918, 959);
             this.BtnPictionary.Name = "BtnPictionary";
-            this.BtnPictionary.Size = new System.Drawing.Size(349, 391);
+            this.BtnPictionary.Size = new System.Drawing.Size(349, 467);
             this.BtnPictionary.TabIndex = 8;
-            this.BtnPictionary.Text = "Game1";
             this.BtnPictionary.UseVisualStyleBackColor = true;
             this.BtnPictionary.Click += new System.EventHandler(this.BtnPictionary_Click);
             // 
@@ -124,9 +125,9 @@
             this.BtnBlackJack.Enabled = false;
             this.BtnBlackJack.Location = new System.Drawing.Point(1775, 959);
             this.BtnBlackJack.Name = "BtnBlackJack";
-            this.BtnBlackJack.Size = new System.Drawing.Size(349, 391);
+            this.BtnBlackJack.Size = new System.Drawing.Size(349, 467);
             this.BtnBlackJack.TabIndex = 9;
-            this.BtnBlackJack.Text = "Game2";
+            this.BtnBlackJack.Text = "Future Game (Not available)";
             this.BtnBlackJack.UseVisualStyleBackColor = true;
             this.BtnBlackJack.Click += new System.EventHandler(this.BtnBlackJack_Click);
             // 

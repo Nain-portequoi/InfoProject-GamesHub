@@ -108,8 +108,7 @@ namespace NewGameForm
 
         private void BtnBlackJack_Click(object sender, EventArgs e)
         {
-            _dataBase.InsertGame("BlackJack");
-            // ShowBlackJack();         lorsque la classe BlackJack_Form sera créée
+            MessageBox.Show("This game is not available yet. Please choose another one.");
         }
 
         #endregion
