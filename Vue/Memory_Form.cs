@@ -38,7 +38,6 @@ namespace Memory_Pierre
             SetPlayer();
             InterfaceButton = new List<Button> { BtnCard1, BtnCard2, BtnCard3, BtnCard4, BtnCard5, BtnCard6, BtnCard7, BtnCard8, BtnCard9, BtnCard10, BtnCard11, BtnCard12, BtnCard13, BtnCard14, BtnCard15, BtnCard16, BtnCard17, BtnCard18 };
             CreateNewGame();
-            MessageBox.Show($"ID joueur 1 : {_player1.PlayerID} et ID joueur 2 : {_player2.PlayerID} et leur pseudo sont : {_player1.Pseudo} et {_player2.Pseudo}");
         }
         private void ConnectCardToButton(List<Button> Button, List<Card> Card)
         {
@@ -102,7 +101,7 @@ namespace Memory_Pierre
             }
             ShowAndHideCard(InterfaceButton);
         }
-        private void AddScore() // J'ai ajouté ça /////////
+        private void AddScore() 
         {
             if (_game.CurrentPlayer == 1)
             {
@@ -113,7 +112,7 @@ namespace Memory_Pierre
                 _player2.ScoreRound += 1;
             }
         }
-        private void ShowScoreRound() // J'ai ajouté ça /////////
+        private void ShowScoreRound() 
         {
             pbPlayer1.Value = _player1.ScoreRound;
             pbPlayer2.Value = _player2.ScoreRound;
@@ -131,7 +130,7 @@ namespace Memory_Pierre
                 _database.InsertRound(_player2.PlayerID, gameID);
                 ShowGameFinishMessage(_player2);
             }
-            DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); // J'ai modifié ça pour voir le score ///////
+            DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); 
             if(dialogResult == DialogResult.No)
             {
                 _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);

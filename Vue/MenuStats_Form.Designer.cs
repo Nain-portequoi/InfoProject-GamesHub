@@ -184,7 +184,7 @@
             this.Controls.Add(this.RichTxtStats);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuStats_Form";
-            this.Size = new System.Drawing.Size(1556, 907);
+            this.Size = new System.Drawing.Size(1736, 907);
             this.GpbStats.ResumeLayout(false);
             this.GpbStats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctSearch)).EndInit();

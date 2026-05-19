@@ -43,7 +43,12 @@ namespace MenuStatsForm
             SetRichTxtStatsAndSearchVisible(true);
             RichTxtStats.Clear();
             RichTxtStats.Text = "Player ID \tPseudo \tFirst Name\t Last Name \tTotal Score \tResults \n";
-            WriteRichTxtStats("SELECT * FROM Players");
+            // WriteRichTxtStats("SELECT * FROM Players");
+            string SQLRequest = @" SELECT p.PlayerId, p.Pseudo, p.FirstName, p.LastName, COUNT(r.RoundID) AS TotalScore FROM Players p 
+            LEFT JOIN Rounds r ON p.PlayerId = r.WinnerPlayerId 
+            GROUP BY p.PlayerId, p.Pseudo, p.FirstName, p.LastName
+            ORDER BY p.PlayerId ASC;";
+            WriteRichTxtStats(SQLRequest);
         }
 
 
