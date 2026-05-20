@@ -219,6 +219,8 @@ namespace Memory_Pierre
             PutImageRecto(InterfaceButton);
             pbPlayer1.Value = 0;
             pbPlayer2.Value = 0;
+            _player1.ScoreRound = 0;
+            _player2.ScoreRound = 0;
             ShowPlayerTurn();
             ShowAndHideCard(InterfaceButton);
         }
