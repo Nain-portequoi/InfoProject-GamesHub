@@ -21,8 +21,8 @@ namespace MainMenuForm
         public MainMenu_Form()
         {
             InitializeComponent();
-            
-            //_dataBase.DeleteAllData();
+
+            //_dataBase.DeleteAllData();    // A utiliser pour supprimer toutes les données de la base de données 
             _dataBase.CreateGameTable();
             _dataBase.CreatePlayersTable();
             _dataBase.CreateRoundTable();
