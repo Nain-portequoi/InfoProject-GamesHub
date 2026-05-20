@@ -13,7 +13,7 @@ namespace MemoryCard
         private int _imageIndex;
         private bool _isReturn;
         private bool _isMacthed;
-        public Card(int imageIndex, string nameImage)
+        public Card(int imageIndex, string nameImage) // Constructeur de la classe Card
         {
             _imageIndex = imageIndex;
             _nameImage = nameImage;
@@ -67,7 +67,7 @@ namespace MemoryCard
         {
             return _pileOfCard;
         }
-        public void CreatePileOfCard()
+        public void CreatePileOfCard() // Création de la pile de carte
         {
             Card Card1 = new Card(1, "Bombardiro Crocodilo");
             _pileOfCard.Add(Card1);

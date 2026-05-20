@@ -217,7 +217,7 @@ namespace DataBase
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error creating table {tableName}: {ex.Message}");
+                    Console.WriteLine($"Error creating table {tableName}: {ex.Message}"); // Affiche un message d'erreur si la création de la table échoue, en précisant le nom de la table et le message d'erreur retourné par l'exception.
                     return false;
                 }
             }

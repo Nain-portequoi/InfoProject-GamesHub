@@ -47,7 +47,7 @@ namespace Memory_Pierre
             int i;
             for(i=0;i<Button.Count;i++)
             {
-                Button[i].Tag = Card[i];
+                Button[i].Tag = Card[i]; // On associe chaque carte à un bouton en utilisant la propriété Tag
             }
         }
         private void PutImageRecto(List<Button> listOfButton)
@@ -56,7 +56,7 @@ namespace Memory_Pierre
             {
                 foreach (Button BtnCard in listOfButton)
                 {
-                    HideImage(BtnCard);
+                    HideImage(BtnCard); // On met l'image de dos sur chaque bouton et on gère les exceptions au cas où l'image ne serait pas trouvée
                 }
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace Memory_Pierre
 
             if (ressourceImage != null)
             {
-                btn.BackgroundImage = (Image)ressourceImage;
+                btn.BackgroundImage = (Image)ressourceImage; // On met l'image de la carte sur le bouton
                 btn.BackgroundImageLayout = ImageLayout.Stretch; // Pour que l'image remplisse le bouton
             }
             else
@@ -86,8 +86,8 @@ namespace Memory_Pierre
 
         private void HideImage(Button btn)
         {
-            object ImageRecto = InfoProject_GamesHub.Properties.Resources.ResourceManager.GetObject("Recto");
-            if (ImageRecto != null)
+            object ImageRecto = InfoProject_GamesHub.Properties.Resources.ResourceManager.GetObject("Recto"); // On va chercher l'image de dos dans les ressources grâce au nom
+            if (ImageRecto != null) // On vérifie que l'image a été trouvée sinon on envoie une exception
             {
                 btn.BackgroundImage = (Image)ImageRecto;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
@@ -97,20 +97,20 @@ namespace Memory_Pierre
         }
 
         private void AnyButtonClick(object sender, EventArgs e)
-        {
-            Button buttonClicked = (Button)sender;
-            Card CardClicked = (Card)buttonClicked.Tag;
-           
-            switch (_game.SelectCard(CardClicked))
+        { 
+            Button buttonClicked = (Button)sender; // On récupère le bouton qui a été cliqué
+            Card CardClicked = (Card)buttonClicked.Tag; // On récupère la carte associée à ce bouton grâce à la propriété Tag
+
+            switch (_game.SelectCard(CardClicked)) 
             {
-                case MemoryGame.FlipResult.Match:
+                case MemoryGame.FlipResult.Match: // Si les deux cartes correspondent, on ajoute un point au joueur et on affiche le score du round
                     AddScore();
                     ShowScoreRound();
                     break;
-                case MemoryGame.FlipResult.NoMatch:
+                case MemoryGame.FlipResult.NoMatch: // Si les deux cartes ne correspondent pas, on change de joueur et on affiche le joueur actuel
                     ShowPlayerTurn();
                     break;
-                case MemoryGame.FlipResult.GameFinish:
+                case MemoryGame.FlipResult.GameFinish: // Si le jeu est terminé, on ajoute un point au joueur qui a gagné le round, on affiche le score du round, on montre les deux dernières cartes et on affiche le message de fin de jeu
                     AddScore();
                     ShowScoreRound();
                     ShowAndHideCard(InterfaceButton); // Pour quand même montrer les deux dernières cartes 
@@ -132,7 +132,7 @@ namespace Memory_Pierre
         }
         private void ShowScoreRound() 
         {
-            pbPlayer1.Value = _player1.ScoreRound;
+            pbPlayer1.Value = _player1.ScoreRound; // On affiche le score du round de chaque joueur dans les progress bars
             pbPlayer2.Value = _player2.ScoreRound;
         }
         private void GameFinish()
@@ -140,34 +140,34 @@ namespace Memory_Pierre
             int gameID = _database.GetGameID("Memory");
             if (pbPlayer1.Value > pbPlayer2.Value)
             {
-                _database.InsertRound(_player1.PlayerID, _player2.PlayerID, gameID);
-                _player1.ScoreTot += 1;
-                _database.UpdateScoreTot(_player1.PlayerID, _player1.ScoreTot);
-                ShowGameFinishMessage(_player1);
+                _database.InsertRound(_player1.PlayerID, _player2.PlayerID, gameID); // On insère le résultat du round dans la base de données en précisant les ID des joueurs et l'ID du jeu
+                _player1.ScoreTot += 1; // On ajoute un point au score total du joueur qui a gagné le round
+                _database.UpdateScoreTot(_player1.PlayerID, _player1.ScoreTot); // On met à jour le score total du joueur dans la base de données
+                ShowGameFinishMessage(_player1); // On affiche un message de fin de jeu en précisant le score final et le nom du joueur qui a gagné
             }
             else
             {
-                _database.InsertRound(_player2.PlayerID, _player1.PlayerID, gameID);
+                _database.InsertRound(_player2.PlayerID, _player1.PlayerID, gameID); // même chose que pour le joueur 1 mais pour le joueur 2
                 _player2.ScoreTot += 1;
                 _database.UpdateScoreTot(_player2.PlayerID, _player2.ScoreTot);
                 ShowGameFinishMessage(_player2);
             }
-            DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); 
-            if(dialogResult == DialogResult.No)
+            DialogResult dialogResult = MessageBox.Show("Do you want to play a new game ?", "NewGame" , MessageBoxButtons.YesNo); // On demande au joueur s'il veut faire une nouvelle partie
+            if (dialogResult == DialogResult.No)
             {
-                _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
+                _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame); // S'il ne veut pas faire une nouvelle partie, on retourne au menu de sélection des joueurs
             }
             else
             {
-                CreateNewGame();
+                CreateNewGame(); // S'il veut faire une nouvelle partie, on recommence une partie en réinitialisant le jeu et les scores du round
             }
 
         }
-        private void ShowGameFinishMessage(Player player)
+        private void ShowGameFinishMessage(Player player) // On affiche un message de fin de jeu en précisant le score final et le nom du joueur qui a gagné
         {
             MessageBox.Show($"The game is finish \nScore final :{_player1.Pseudo} {_player1.ScoreRound} - {_player2.ScoreRound} {_player2.Pseudo}  \n{player.Pseudo} won the game !");
         }
-        private void ShowAndHideCard(List<Button> AllButton)
+        private void ShowAndHideCard(List<Button> AllButton) 
         {
             foreach (Button button in AllButton)
             {
@@ -176,22 +176,22 @@ namespace Memory_Pierre
                 {
                     if (card.GetIsReturn() == true)
                     {
-                        ShowImage(button);
+                        ShowImage(button); // Si la carte est retournée, on affiche son image
                     }
                     else
                     {
-                        HideImage(button);
+                        HideImage(button); // Si la carte n'est pas retournée, on affiche l'image de dos
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message); // On gère les exceptions au cas où une image ne serait pas trouvée et on retourne au menu de sélection des joueurs et de jeux
                     _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
                 }
             }
         }
 
-        private void ShowPlayerTurn()
+        private void ShowPlayerTurn() // On affiche le joueur actuel en mettant son nom en vert et en entourant son nom de ">" et "<" et en mettant le nom de l'autre joueur en rouge
         {
             if (_game.CurrentPlayer == 1)
             {
@@ -210,7 +210,7 @@ namespace Memory_Pierre
             label1.ForeColor = Color.Green;
             label2.ForeColor = Color.Red;
         }
-        private void CreateNewGame()
+        private void CreateNewGame() // On crée une nouvelle partie en réinitialisant le jeu, les cartes, les scores du round et en affichant le joueur qui commence
         {
             _imageCollection = new ImageCollection();
             _game = new MemoryGame(_imageCollection);
@@ -223,7 +223,7 @@ namespace Memory_Pierre
             ShowAndHideCard(InterfaceButton);
         }
 
-        private void SetPlayer()
+        private void SetPlayer() // On récupère les informations des joueurs sélectionnés dans le menu de sélection des joueurs et de jeux grâce à leurs ID et on les stocke dans des objets Player
         {
             _database = new DataBaseConfig();
             _player1 = _database.GetPlayersAllInformations(_menuNewGame.GetPlayer1ID());

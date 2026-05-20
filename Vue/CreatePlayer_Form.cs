@@ -22,7 +22,7 @@ namespace MenuCreatePlayer
         {
             _mainMenu = mainMenu;
             InitializeComponent();
-            TxtPseudo.Focus();
+            TxtPseudo.Focus(); // On place le focus sur le champ de saisie du pseudo pour que l'utilisateur puisse commencer à taper immédiatement
             _newGame = new MenuNewGame_Form(_mainMenu);
         }
 
@@ -37,19 +37,19 @@ namespace MenuCreatePlayer
             {
                 try 
                 {
-                    _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0);
-                    _mainMenu.ShowMenuHost(_mainMenu.PnlHost);
+                    _dataBase.InsertPlayer(TxtPseudo.Text, TxtFirstName.Text, TxtLastName.Text, 0); // On insère le joueur dans la base de données avec un score initial de 0
+                    _mainMenu.ShowMenuHost(_mainMenu.PnlHost); // Après avoir enregistré les informations du joueur, on retourne au menu principal
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error saving player information. \nThe pseudo might already exist !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Error saving player information. \nThe pseudo might already exist !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); // En cas d'erreur lors de l'enregistrement des informations du joueur, on affiche un message d'erreur à l'utilisateur
                 }
             }
         }
         private bool WantToSave(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Do you want to save the information?", "Save Information", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (dialogResult == DialogResult.Yes) // Si l'utilisateur clique sur "Yes", on retourne true pour indiquer qu'il souhaite enregistrer les informations
             {
                 return true;
             }
@@ -61,7 +61,7 @@ namespace MenuCreatePlayer
 
         private void TxtPseudo_TextChanged(object sender, EventArgs e)
         {
-            if (TxtPseudo.Text != "")
+            if (TxtPseudo.Text != "") // Si le champ de saisie du pseudo n'est pas vide, on active le bouton "Save Information". Sinon, on le désactive pour empêcher l'utilisateur d'enregistrer des informations incomplètes
             {
                 BtnSaveInformation.Enabled = true;
             }
@@ -70,7 +70,7 @@ namespace MenuCreatePlayer
                 BtnSaveInformation.Enabled = false;
             }
         }
-        private void PerformClickSave(KeyPressEventArgs e)
+        private void PerformClickSave(KeyPressEventArgs e) // Cette méthode est appelée lors de la pression d'une touche dans les champs de saisie du pseudo, du prénom ou du nom. Si la touche pressée est "Enter", on déclenche le clic sur le bouton "Save Information" pour enregistrer les informations du joueur.
         {
             if (e.KeyChar == (char)Keys.Enter)
             {

@@ -52,22 +52,22 @@ namespace MainMenuForm
         private void ShowMenuStats()
         {
             SetPanel(PnlHost);
-            // Create an instance of the MenuStats_Form
+            // On crée une instance de MenuStats_Form en lui passant une référence à MainMenu_Form (this)
             MenuStats_Form menuStats = new MenuStats_Form(this);
             menuStats.Dock = DockStyle.Fill;
             PnlHost.Controls.Add(menuStats);
         }        
         public void SetPanel(Panel panel) 
         {
-            panel.Controls.Clear();
-            panel.Dock = DockStyle.Fill;
-            panel.Visible = true;
+            panel.Controls.Clear(); // On efface les contrôles existants dans le panel
+            panel.Dock = DockStyle.Fill; // On définit le Dock du panel pour qu'il remplisse tout l'espace disponible
+            panel.Visible = true; // On rend le panel visible pour afficher le nouveau menu
         }
 
         public void ShowMenuHost(Panel panel)
         {
-            panel.Controls.Clear();
-            panel.Visible = false;
+            panel.Controls.Clear(); // On efface les contrôles existants dans le panel
+            panel.Visible = false; // On rend le panel invisible pour éviter les problèmes d'affichage
         }
         #endregion
 

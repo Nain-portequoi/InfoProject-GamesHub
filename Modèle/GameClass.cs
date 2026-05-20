@@ -10,7 +10,7 @@ namespace MemoryGameClass
     public abstract class game
     {
         public int CurrentPlayer = 1;
-        public int NextPlayer(int NbPlayer)
+        public int NextPlayer(int NbPlayer) // Permet de passer au joueur suivant, en fonction du nombre de joueurs 
         {
             CurrentPlayer = CurrentPlayer + 1;
             if (CurrentPlayer > NbPlayer)
@@ -32,13 +32,13 @@ namespace MemoryGameClass
             _imageCollection = imageCollection;
             _currentSelectedCard = new List<Card>();
         }
-        public void SetUpGame()
+        public void SetUpGame() // Prépare le jeu en créant et en mélangeant les cartes
         {
-            _imageCollection.CreatePileOfCard();
+            _imageCollection.CreatePileOfCard(); // Crée les cartes à partir des images
             _imageCollection.MixCard();
         }
 
-        public enum FlipResult
+        public enum FlipResult // Permet de savoir si les cartes sélectionnées sont identiques ou pas, ou si c'est la première carte sélectionnée, ou si le jeu est terminé
         {
             Match,
             NoMatch,
@@ -58,7 +58,7 @@ namespace MemoryGameClass
                 _currentSelectedCard[1].ReturnCard();
                 _currentSelectedCard.Clear();
             }
-            cardSelected.ReturnCard();
+            cardSelected.ReturnCard(); // On retourne la carte sélectionnée
             if (_currentSelectedCard.Count == 1)
             {
                 _currentSelectedCard.Add(cardSelected);
