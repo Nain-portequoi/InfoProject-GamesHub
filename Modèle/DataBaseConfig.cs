@@ -225,7 +225,7 @@ namespace DataBase
         public bool CreatePlayersTable()
         {
             string fileName = DatabaseFileName;
-            string columns = "PlayerId INTEGER PRIMARY KEY AUTOINCREMENT, Pseudo TEXT NOT NULL, FirstName TEXT, LastName TEXT, ScoreTot INTEGER, Results TEXT, UNIQUE(Pseudo)";
+            string columns = "PlayerId INTEGER PRIMARY KEY AUTOINCREMENT, Pseudo TEXT NOT NULL, FirstName TEXT, LastName TEXT, ScoreTot INTEGER, UNIQUE(Pseudo)";
             return CreateTable("Players", columns);
         }
         public bool CreateGameTable()
@@ -243,7 +243,7 @@ namespace DataBase
         #endregion
 
         #region DataInsertion
-        public void InsertPlayer(string pseudo, string firstName, string lastName, int scoreTot, string results)
+        public void InsertPlayer(string pseudo, string firstName, string lastName, int scoreTot)
         {
             string fileName = DatabaseFileName;
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
@@ -251,12 +251,11 @@ namespace DataBase
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO Players (Pseudo, FirstName, LastName, ScoreTot, Results) VALUES (@pseudo, @firstName, @lastName, @scoreTot, @results)";
+                command.CommandText = "INSERT INTO Players (Pseudo, FirstName, LastName, ScoreTot) VALUES (@pseudo, @firstName, @lastName, @scoreTot)";
                 command.Parameters.AddWithValue("@pseudo", pseudo);
                 command.Parameters.AddWithValue("@firstName", firstName);
                 command.Parameters.AddWithValue("@lastName", lastName);
                 command.Parameters.AddWithValue("@scoreTot", scoreTot);
-                command.Parameters.AddWithValue("@results", results);
                 try
                 {
                     command.ExecuteNonQuery();

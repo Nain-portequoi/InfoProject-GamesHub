@@ -52,9 +52,17 @@ namespace Memory_Pierre
         }
         private void PutImageRecto(List<Button> listOfButton)
         {
-            foreach(Button BtnCard in listOfButton)
+            try
             {
-                HideImage(BtnCard);
+                foreach (Button BtnCard in listOfButton)
+                {
+                    HideImage(BtnCard);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
             }
         }
         private void ShowImage(Button btn)
@@ -71,14 +79,21 @@ namespace Memory_Pierre
                 btn.BackgroundImage = (Image)ressourceImage;
                 btn.BackgroundImageLayout = ImageLayout.Stretch; // Pour que l'image remplisse le bouton
             }
+            else
+                throw new Exception("Image not found: " + carte.GetNameImage());
         }
 
 
         private void HideImage(Button btn)
         {
             object ImageRecto = InfoProject_GamesHub.Properties.Resources.ResourceManager.GetObject("Recto");
-            btn.BackgroundImage = (Image)ImageRecto;
-            btn.BackgroundImageLayout = ImageLayout.Stretch;
+            if (ImageRecto != null)
+            {
+                btn.BackgroundImage = (Image)ImageRecto;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else
+                throw new Exception("Image not found: Recto");
         }
 
         private void AnyButtonClick(object sender, EventArgs e)
@@ -154,16 +169,24 @@ namespace Memory_Pierre
         }
         private void ShowAndHideCard(List<Button> AllButton)
         {
-            foreach(Button button in AllButton)
+            foreach (Button button in AllButton)
             {
                 Card card = (Card)button.Tag;
-                if(card.GetIsReturn()==true)
+                try
                 {
-                    ShowImage(button);
+                    if (card.GetIsReturn() == true)
+                    {
+                        ShowImage(button);
+                    }
+                    else
+                    {
+                        HideImage(button);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    HideImage(button);
+                    MessageBox.Show(ex.Message);
+                    _mainMenu.ShowMenuHost(_menuNewGame.PnlMenuNewGame);
                 }
             }
         }

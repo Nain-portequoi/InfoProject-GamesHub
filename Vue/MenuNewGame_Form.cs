@@ -19,17 +19,6 @@ namespace NewGameForm
         #region DataMembers
         private MainMenu_Form _mainMenu;
         private DataBaseConfig _dataBase = new DataBaseConfig();
-
-        public MainMenu_Form GetMainMenu() 
-        {
-            return _mainMenu;
-        }
-        enum GameChoice
-        {
-            Pictionary,
-            BlackJack
-        }
-
         private static string _selectedPlayer1 = null;
         private static string _selectedPlayer1Previous = null;
         private static string _selectedPlayer2 = null;
