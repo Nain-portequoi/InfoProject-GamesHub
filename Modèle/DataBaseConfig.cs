@@ -42,7 +42,7 @@ namespace DataBase
             }
             return playersPseudo;
         }
-        public Player GetPlayersPseudo(int playerId) 
+        public Player GetPlayersPseudo(int playerId)  // Cette méthode permet de récupérer le pseudo d'un joueur à partir de son ID. Elle retourne un objet Player contenant uniquement le pseudo du joueur correspondant à l'ID fourni. Si aucun joueur n'est trouvé avec cet ID, la méthode retourne null.
         {
             Player player;
             string fileName = DatabaseFileName;
